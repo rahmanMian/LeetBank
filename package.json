@@ -1,0 +1,19 @@
+{
+  "name": "code-storage-app",
+  "version": "1.0.0",
+  "description": "easy access to coding problems",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rahmanMian/Code-Storage-App.git"
+  },
+  "author": "Rahman Mian",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rahmanMian/Code-Storage-App/issues"
+  },
+  "homepage": "https://github.com/rahmanMian/Code-Storage-App#readme"
+}
