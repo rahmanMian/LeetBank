@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "code-storage-app",
     "public": "public",
     "ignore": [
       "firebase.json",
