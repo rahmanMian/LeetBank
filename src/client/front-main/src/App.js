@@ -1,15 +1,15 @@
 import './App.css';
-import createBlock from "./createBlock.jsx";
+import {AddQuestion} from './add/addQuestion.jsx';
 
 function App() {
-   
+
   return (
     <>
     <div className="App">
       <header className="App-header">
       </header>
       </div>
-      <createBlock />
+      <AddQuestion />
     </>
   );
 }
