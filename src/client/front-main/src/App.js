@@ -1,5 +1,5 @@
 import './App.css';
-import CreateBlock from "./createBlock.jsx";
+import createBlock from "./createBlock.jsx";
 
 function App() {
    
@@ -9,7 +9,7 @@ function App() {
       <header className="App-header">
       </header>
       </div>
-      <CreateBlock />
+      <createBlock />
     </>
   );
 }
