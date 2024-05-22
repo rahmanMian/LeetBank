@@ -1,12 +1,16 @@
 import './App.css';
+import CreateBlock from "./createBlock.jsx";
 
 function App() {
+   
   return (
+    <>
     <div className="App">
       <header className="App-header">
-        <h1>Start From Here</h1>
       </header>
-    </div>
+      </div>
+      <CreateBlock />
+    </>
   );
 }
 

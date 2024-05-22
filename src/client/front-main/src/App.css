@@ -1,3 +1,18 @@
 html{
     background-color: beige;
 }
+
+.blockContainer{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.block{
+    margin-top: 20px;
+    width: 200px;
+    height: 200px;
+    background-color: green;
+    font-size: 20px;
+}
