@@ -13,7 +13,7 @@ export function CreateBlocks({ questionArray = [] }) {
     return (
         <div className="blockContainer">
             {questionArray.length > 0 && questionArray.map((question) => (
-                <Block key={question.id} question={question} />
+                <Block key ={question.id}  question={question}/>
             ))}
         </div>
     );

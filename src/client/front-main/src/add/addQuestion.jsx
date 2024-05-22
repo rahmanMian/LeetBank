@@ -31,7 +31,7 @@ export function AddQuestion(){
     function addQuestion(title) {
         const newQuestion = {
             id: uuidv4(), // Generate unique ID for note
-            title: title,  
+            title: title
         };
         setQuestion(questions => [...questions, newQuestion]);
     }

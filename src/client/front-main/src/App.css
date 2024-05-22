@@ -11,8 +11,9 @@ html{
 }
 .block{
     margin-top: 20px;
-    width: 200px;
-    height: 200px;
+    width: 30vw;
+    height: 30vh;
     background-color: green;
-    font-size: 20px;
 }
+
+
