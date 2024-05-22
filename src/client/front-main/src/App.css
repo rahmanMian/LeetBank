@@ -11,9 +11,10 @@ html{
 }
 .block{
     margin-top: 20px;
-    width: 30vw;
-    height: 30vh;
+    width: 640px;
+    height: 80px;
     background-color: green;
+    border-radius: 5px;
 }
 
 
