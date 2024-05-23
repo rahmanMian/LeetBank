@@ -2,6 +2,7 @@ import React from 'react';
 import '../App.css';
 import { Block } from './block';
 
+
 /**
  * Renders a container with multiple block elements, each representing a question.
  *
@@ -9,12 +10,14 @@ import { Block } from './block';
  * @param {Object[]} questionArray - Array of question objects.
  * @returns {JSX.Element} blockContainer - Container containing div blocks.
  */
-export function CreateBlocks({ questionArray = [] }) {
+export function CreateBlocks({ questionArray = [], setQuestion}) {
+
     return (
         <div className="blockContainer">
             {questionArray.length > 0 && questionArray.map((question) => (
-                <Block key ={question.id}  question={question}/>
+                <Block key ={question.id}  question={question} setQuestion = {setQuestion}/>
             ))}
+           
         </div>
     );
 }
