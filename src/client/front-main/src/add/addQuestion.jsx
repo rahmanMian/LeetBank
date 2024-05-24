@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import "../App.css";
 import { CreateBlocks } from "./createBlocks";
+import { ShuffleOutput } from "../shuffle/shuffleOutput";
+
 
 /**
  * Component to add and manage questions.
@@ -47,7 +49,9 @@ export function AddQuestion() {
     function addQuestion(title) {
         const newQuestion = {
             id: uuidv4(), // Generate unique ID for question
-            title: title
+            title: title,
+            
+
         };
         setQuestion(questions => [...questions, newQuestion]);
     }
@@ -61,6 +65,8 @@ export function AddQuestion() {
             </form>
 
             <CreateBlocks questionArray={questions} setQuestion={setQuestion} />
+
+            <ShuffleOutput questionArray={questions} />
         </>
     );
 }

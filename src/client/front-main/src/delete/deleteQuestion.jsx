@@ -1,6 +1,5 @@
 import "../App.css"
 
-
 /**
  * Deletes a question from the state based on its ID.
  *
