@@ -25,7 +25,8 @@ export function ShuffleOutput({ questionArray }) {
     return (
         <>
             <ShuffleBlock questionArray={questionArray} index={index} />
-            <button onClick={handleShuffle}>Shuffle</button>
+            {/*if questions then add shuffle ebutton*/}
+            {questionArray.length > 0 &&<button onClick={handleShuffle}>Shuffle</button>}
         </>
     );
 }
