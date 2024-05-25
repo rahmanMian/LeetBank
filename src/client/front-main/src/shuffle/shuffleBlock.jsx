@@ -10,14 +10,14 @@
  * @returns {JSX.Element|null} The rendered block or null if index is invalid.
  */
 
-export function ShuffleBlock({ questionArray, index }) {
+export function ShuffleBlock({questionArray, question}) {
     if (index === null || index < 0 || index >= questionArray.length) {
         return null;
     }
 
     return (
-        <div className="block" id={questionArray[index].id}>
-            <span>{questionArray[index].title}</span>
+        <div className="block" id={question.id}>
+            <span>{question.title}</span>
         </div>
     );
 }
