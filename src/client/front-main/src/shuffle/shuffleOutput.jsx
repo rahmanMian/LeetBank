@@ -14,17 +14,8 @@ import "../App.css";
  * 
  * @returns {JSX.Element} The rendered output with the ShuffleBlock and shuffle button.
  */
-export function ShuffleOutput({ questionArray }) {
-    const [index, setIndex] = useState(() => {
-        const index = sessionStorage.getItem('shuffledIndex');
-        return index !== null ? parseInt(index) : null;
-    });
-
-    useEffect(() => {
-        if (index !== null) {
-            sessionStorage.setItem('shuffledIndex', index);
-        }
-    }, [index]);
+export function ShuffleOutput({ questionArray , setIndex, index}) {
+   
 
     const handleShuffle = () => {
         const newIndex = Math.floor(Math.random() * questionArray.length);

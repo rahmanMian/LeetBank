@@ -27,6 +27,16 @@ export function AddQuestion() {
 
     const [newItem, setNewItem] = useState("");
 
+
+    const [index, setIndex] = useState(() => {
+        const index = sessionStorage.getItem('shuffledIndex');
+        return index !== null ? parseInt(index) : null;
+    });
+
+    useEffect(() => {
+            sessionStorage.setItem('shuffledIndex', index);
+    }, [index]);
+
     /**
      * Handles form submission to add a new question.
      *
@@ -63,10 +73,10 @@ export function AddQuestion() {
                     <input id="addInput" placeholder="Add a note..." value={newItem} onChange={e => setNewItem(e.target.value)} />
                 </div>
             </form>
+            <ShuffleOutput questionArray={questions} setIndex={setIndex} index ={index}/>
+            <CreateBlocks questionArray={questions} setQuestion={setQuestion} setIndex={setIndex}/>
 
-            <CreateBlocks questionArray={questions} setQuestion={setQuestion} />
-
-            <ShuffleOutput questionArray={questions} />
+            
         </>
     );
 }
