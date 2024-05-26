@@ -30,7 +30,7 @@ export function AddQuestion() {
 
     const [index, setIndex] = useState(() => {
         const index = sessionStorage.getItem('shuffledIndex');
-        return index !== null ? parseInt(index) : null;
+        return index !== null ? parseInt(index) : Number.MAX_SAFE_INTEGER;
     });
 
     useEffect(() => {

@@ -11,5 +11,5 @@ import "../App.css";
  */
 export function DeleteQuestion({ id, setQuestion, setIndex}) {
     setQuestion(questions => questions.filter(question => question.id !== id));
-    setIndex(null);
+    setIndex(Number.MAX_SAFE_INTEGER);
 }
