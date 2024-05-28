@@ -9,12 +9,35 @@ html, #root{
     align-items: center;
     flex-direction: column;
 }
+
 .block{
     margin-top: 20px;
     width: 640px;
-    height: 80px;
+    height: 50px;
     background-color: green;
-    border-radius: 5px;
+    border-radius: 5px 5px 0 0;
 }
 
+.accordion{
+    --bs-body-bg:  green;
+    --bs-border-width: 0;
+     width: 640px;
+     --bs-border-width: 0;
+}
+
+
+
+.accordion-header{
+    --bs-accordion-active-bg:  green;
+    
+}
+.accoring-button{
+    padding: 0;
+    border: 0;
+}
+.accordion-collapse collapse show{
+    border: none;
+    padding: 0;
+    --bs-border-width: 0;
+}
 
