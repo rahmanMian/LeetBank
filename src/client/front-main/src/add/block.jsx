@@ -1,9 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap CSS is imported
 import '../App.css';
 import { DeleteQuestion } from '../delete/deleteQuestion';
-
-
 
 /**
  * Renders a block representing a question with a delete button.
@@ -15,6 +13,8 @@ import { DeleteQuestion } from '../delete/deleteQuestion';
  * @returns {JSX.Element} The rendered block component.
  */
 export function Block({ question, setQuestion, setIndex }) {
+    const [isChecked, setIsChecked] = useState(false);
+
     /**
      * Handles the deletion of a question.
      */
@@ -22,13 +22,33 @@ export function Block({ question, setQuestion, setIndex }) {
         DeleteQuestion({ id: question.id, setQuestion, setIndex });
     };
 
+    const handleCheckboxChange = () => {
+        setIsChecked(!isChecked);
+    };
+
     return (
         <>
-            <div className="block" id={question.id}>
+            <div className="block" id={`block-${question.id}`}>
                 <span>{question.title}</span>
                 <button onClick={handleDeleteQuestion}>Delete</button>
             </div>
-          
+            <div className="tab">
+                    <input
+                        type="checkbox"
+                        name={`accordion-${question.id}`}
+                        id={`cb-${question.id}`}
+                        checked={isChecked}
+                        onChange={handleCheckboxChange}
+                    />
+                    <label htmlFor={`cb-${question.id}`} className="tab__label">
+                        Comments
+                    </label>
+                    {isChecked && (
+                        <div className="tab__content">
+                            <textarea></textarea>
+                        </div>
+                    )}
+                </div>
         </>
     );
 }
