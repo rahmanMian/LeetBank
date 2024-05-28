@@ -45,7 +45,7 @@ export function Block({ question, setQuestion, setIndex }) {
                     </label>
                     {isChecked && (
                         <div className="tab__content">
-                            <textarea></textarea>
+                            <textarea class="questionComment"></textarea>
                         </div>
                     )}
                 </div>
