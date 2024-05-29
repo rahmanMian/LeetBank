@@ -1,5 +1,5 @@
 html, #root{
-    background-color: blue;
+    background-color: grey;
 }
 
 .blockContainer{
@@ -20,7 +20,7 @@ html, #root{
 
 
 :root {
-    --primary: pink;
+    --primary: orange;
     --secondary: #ff5252;
     --background: #eee;
     --highlight: #ffda79;
@@ -39,6 +39,7 @@ html, #root{
     opacity: 0;
     z-index: -1;
   }
+  
   .tab__content {
     overflow: hidden;
     transition: all 0.35s;
