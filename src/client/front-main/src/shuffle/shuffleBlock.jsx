@@ -14,19 +14,12 @@ import '../App.css';
 
 export function ShuffleBlock({questionArray, index}) {
 
-    const [isChecked, setIsChecked] = useState(false);
-
-    
-    const handleCheckboxChange = () => {
-        setIsChecked(!isChecked);
-    };
-
     if (index === null || index < 0 || index >= questionArray.length) {
         return null;
     }else{
     return (
         <>
-        <div className="block" id={`block-${questionArray[index].id}`}>
+        <div className="shuffle block" id={questionArray[index].id}>
             <span>{questionArray[index].title}</span>
 
         </div>
