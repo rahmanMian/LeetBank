@@ -1,4 +1,6 @@
-
+import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap CSS is imported
+import '../App.css';
 
 /**
  * Renders a block with the title of a question from the questionArray based on the given index.
@@ -11,14 +13,26 @@
  */
 
 export function ShuffleBlock({questionArray, index}) {
+
+    const [isChecked, setIsChecked] = useState(false);
+
+    
+    const handleCheckboxChange = () => {
+        setIsChecked(!isChecked);
+    };
+
     if (index === null || index < 0 || index >= questionArray.length) {
         return null;
     }else{
-
     return (
-        <div className="block" id={questionArray[index].id}>
+        <>
+        <div className="block" id={`block-${questionArray[index].id}`}>
             <span>{questionArray[index].title}</span>
+
         </div>
+        <div className="tab">
+                </div>
+    </>
     );
 }
 }
