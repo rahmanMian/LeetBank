@@ -21,10 +21,14 @@ export function AddQuestion() {
         return JSON.parse(localValue);
     });
 
+   
+
     useEffect(() => {
         localStorage.setItem("QUESTIONS", JSON.stringify(questions));
     }, [questions]);
 
+
+   //for storage mangemt of the user input for shuffle 
     const [newItem, setNewItem] = useState("");
 
 
@@ -60,11 +64,21 @@ export function AddQuestion() {
         const newQuestion = {
             id: uuidv4(), // Generate unique ID for question
             title: title,
-            
-
+            comment: ""
         };
         setQuestion(questions => [...questions, newQuestion]);
     }
+
+    
+
+    function addComment(id, comment) {
+        setQuestion(questions => 
+            questions.map(question => 
+                question.id === id ? { ...question, comment: comment } : question
+            )
+        );
+    }
+
 
     return (
         <>
@@ -73,8 +87,9 @@ export function AddQuestion() {
                     <input id="addInput" placeholder="Add a note..." value={newItem} onChange={e => setNewItem(e.target.value)} />
                 </div>
             </form>
+
             <ShuffleOutput questionArray={questions} setIndex={setIndex} index ={index}/>
-            <CreateBlocks questionArray={questions} setQuestion={setQuestion} setIndex={setIndex}/>
+            <CreateBlocks questionArray={questions} setQuestion={setQuestion} setIndex={setIndex} addComment={addComment}/>
 
             
         </>

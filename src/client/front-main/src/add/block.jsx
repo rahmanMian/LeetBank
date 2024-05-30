@@ -12,8 +12,9 @@ import { DeleteQuestion } from '../delete/deleteQuestion';
  * @param {Function} setIndex - The state setter function for updating the index state.
  * @returns {JSX.Element} The rendered block component.
  */
-export function Block({ question, setQuestion, setIndex }) {
+export function Block({question, setQuestion, setIndex, addComment}) {
     const [isChecked, setIsChecked] = useState(false);
+    const [newText, setnewText] = useState("");
 
     /**
      * Handles the deletion of a question.
@@ -25,6 +26,12 @@ export function Block({ question, setQuestion, setIndex }) {
     const handleCheckboxChange = () => {
         setIsChecked(!isChecked);
     };
+
+    const handleEdit = (e) => {
+        const newText = e.target.value;
+        setnewText(newText);
+        addComment(question.id, newText);
+      };
 
     return (
         <>
@@ -46,7 +53,13 @@ export function Block({ question, setQuestion, setIndex }) {
                     </div>
                     {isChecked && (
                         <div className="tab__content">
-                            <textarea className="questionComment"></textarea>
+                             <textarea
+                             className="questionComment"
+                             id={"textarea_" + question.id}
+                             type="text"
+                             value={question.comment}
+                             onChange={handleEdit}
+                              />
                         </div>
                     )}
         </>

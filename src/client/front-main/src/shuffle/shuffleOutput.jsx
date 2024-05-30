@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import { ShuffleBlock } from './shuffleBlock'; // Make sure the path is correct
 import "../App.css";
 
