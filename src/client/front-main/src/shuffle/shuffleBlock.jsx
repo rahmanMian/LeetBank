@@ -20,10 +20,7 @@ export function ShuffleBlock({questionArray, index}) {
         <>
         <div className="shuffle block" id={questionArray[index].id}>
             <span>{questionArray[index].title}</span>
-
         </div>
-        <div className="tab">
-                </div>
     </>
     );
 }

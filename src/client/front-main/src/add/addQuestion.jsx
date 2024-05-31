@@ -82,13 +82,17 @@ export function AddQuestion() {
 
     return (
         <>
+           {/*allows you to add new blocks*/}
             <form onSubmit={handleSubmit} className="new-item-form">
                 <div className="form-row">
                     <input id="addInput" placeholder="Add a note..." value={newItem} onChange={e => setNewItem(e.target.value)} />
                 </div>
             </form>
-
+            
+            {/*Renders the shuffle block usiing an index generated*/}
             <ShuffleOutput questionArray={questions} setIndex={setIndex} index ={index}/>
+            
+            {/*Renders the blocks using and the comments*/}
             <CreateBlocks questionArray={questions} setQuestion={setQuestion} setIndex={setIndex} addComment={addComment}/>
 
             

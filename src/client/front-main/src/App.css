@@ -1,3 +1,4 @@
+/*both are stored seperately and need to have commas to cover app*/
 html, #root{
     background-color: blue;
     margin: 0;
@@ -5,7 +6,7 @@ html, #root{
     border: none;
 }
 
-
+/*Styles for container which stores all the blocks*/
 .blockContainer{
     display: flex;
     width: 100%;
@@ -15,6 +16,7 @@ html, #root{
     box-sizing: border-box;
 }
 
+/*Indivudal blcoks for each question */
 .block{
     margin-top: 20px;
     width: 800px;
@@ -23,6 +25,26 @@ html, #root{
     border-radius: 5px 5px 0 0;
 }
 
+
+/*styling for the bar and container that adds questions */
+.form-row{
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* Shuffle container: contains shuffle button and shuffle block */
+#shuffleContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/*Shuffle block for the queston that is shuffled */
 .shuffle{
   border-radius: 5px;
   height: 60px;
@@ -34,8 +56,13 @@ html, #root{
 }
 
 
+#shuffleButton{
+  margin-top: 20px;
+}
 
-/* Core styles/functionality */
+
+
+/* Core styles/functionality for the tab opening and closing */
 .tab{
     width: 800px;
 }
@@ -52,7 +79,6 @@ html, #root{
     justify-content: center;
   }
  
-
   .tab__label,
   .tab__close {
     display: flex;
@@ -103,6 +129,8 @@ html, #root{
     }
   }
   
+
+/*text area that holds comments */
 .questionComment{
   width: 100%;
   height: 100%;

@@ -58,11 +58,12 @@ export function Block({question, setQuestion, setIndex, addComment}) {
 
     return (
         <div className='block-tab'>
-        
+
             <div className="block" id={`block-${question.id}`}>
                 <span>{question.title}</span>
                 <button onClick={handleDeleteQuestion}>Delete</button>
             </div>
+
             <div className="tab">
                   <label htmlFor={`cb-${question.id}`} ref={headerRef} className="tab__label">
                     Comments
@@ -74,8 +75,9 @@ export function Block({question, setQuestion, setIndex, addComment}) {
                         checked={isChecked}
                         onChange={handleCheckboxChange}
                     />
-                    </div>
-                    {isChecked && (
+            </div>
+
+             {isChecked && (
                         <div className="tab__content">
                              <textarea
                              className="questionComment"
@@ -85,8 +87,9 @@ export function Block({question, setQuestion, setIndex, addComment}) {
                              value={question.comment}
                              onChange={handleEdit}
                               />
-                        </div>
-                    )}
-         </ div>
+                       </div>
+              )}
+                    
+         </div>
     );
 }
