@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap CSS is imported
 import '../App.css';
 import { DeleteQuestion } from '../delete/deleteQuestion';
@@ -14,9 +14,20 @@ import { DeleteQuestion } from '../delete/deleteQuestion';
  */
 export function Block({question, setQuestion, setIndex, addComment}) {
     const [isChecked, setIsChecked] = useState(false);
-    const [newText, setnewText] = useState("");
+    const [newText, setNewText] = useState(question.comment || "");
+    const textareaRef = useRef(null); // Creating a ref
+    const headerRef = useRef(null);
+
+    
+    useEffect(() => {
+        if (textareaRef.current) {
+            textareaRef.current.style.height = 'auto'; // Reset the height
+            textareaRef.current.style.height = textareaRef.current.scrollHeight + 'px'; // Set the height to fit content
+        }
+    }, [newText, isChecked]);
 
     /**
+     * 
      * Handles the deletion of a question.
      */
     const handleDeleteQuestion = () => {
@@ -25,21 +36,37 @@ export function Block({question, setQuestion, setIndex, addComment}) {
 
     const handleCheckboxChange = () => {
         setIsChecked(!isChecked);
+
+        if (headerRef.current) {
+            headerRef.current.style.borderRadius = isChecked ? '0 0 5px 5px' : '0';
+         
+        }
     };
 
     const handleEdit = (e) => {
         const newText = e.target.value;
-        setnewText(newText);
+        setNewText(newText);
         addComment(question.id, newText);
-      };
+
+        if (textareaRef.current) {
+            textareaRef.current.style.height = 'auto'; // Reset the height
+            textareaRef.current.style.height = textareaRef.current.scrollHeight + 'px'; // Set the height to fit content
+        }
+    };
+
+    
 
     return (
-        <>
+        <div className='block-tab'>
+        
             <div className="block" id={`block-${question.id}`}>
                 <span>{question.title}</span>
                 <button onClick={handleDeleteQuestion}>Delete</button>
             </div>
             <div className="tab">
+                  <label htmlFor={`cb-${question.id}`} ref={headerRef} className="tab__label">
+                    Comments
+                    </label>
                     <input 
                         type="checkbox"
                         name={`accordion-${question.id}`}
@@ -47,21 +74,19 @@ export function Block({question, setQuestion, setIndex, addComment}) {
                         checked={isChecked}
                         onChange={handleCheckboxChange}
                     />
-                    <label htmlFor={`cb-${question.id}`} className="tab__label">
-                        Comments
-                    </label>
                     </div>
                     {isChecked && (
                         <div className="tab__content">
                              <textarea
                              className="questionComment"
                              id={"textarea_" + question.id}
+                             ref={textareaRef} // Assigning the ref to the textarea
                              type="text"
                              value={question.comment}
                              onChange={handleEdit}
                               />
                         </div>
                     )}
-        </>
+         </ div>
     );
 }
