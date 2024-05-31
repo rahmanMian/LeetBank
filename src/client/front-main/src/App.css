@@ -1,5 +1,5 @@
 html, #root{
-    background-color: grey;
+    background-color: beige;
 }
 
 .blockContainer{
@@ -12,7 +12,7 @@ html, #root{
 
 .block{
     margin-top: 20px;
-    width: 640px;
+    width: 800px;
     height: 40px;
     background-color: green;
     border-radius: 5px 5px 0 0;
@@ -41,7 +41,7 @@ html, #root{
 
 /* Core styles/functionality */
 .tab{
-    width: 640px;
+    width: 800px;
     max-height: 100vh;
 }
 .tab input {
@@ -119,10 +119,11 @@ html, #root{
   word-spacing: 1px;
   border-radius: 0 0 2px 2px;
   border: none;
+  background: grey;
 }
 .tab__content{
   border-radius: 0 0 2px 2px;
-  width: 640px;
+  width: 800px;
 }
 textarea:focus{
   outline: none;
