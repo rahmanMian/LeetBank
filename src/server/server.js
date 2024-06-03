@@ -33,7 +33,7 @@ const QuestionQueryType = new GraphQLObjectType({
           questions: {
             type: new GraphQLList(QuestionType),
             description: "List of All Questions",
-            resolve: () => questions
+            resolve: () => questions //this will be the data / objct you want to return
           }
         })
      })
@@ -49,3 +49,27 @@ app.use('/graphql', expressGraphQL({
 }));
 
 app.listen(5000, () => console.log('Server Running'));
+
+
+
+
+//potential tag i will use IA
+/*
+query problemsetQuestionList{
+  problemsetQuestionList: questionList(
+    categorySlug: ""
+    limit: 1
+    filters: {}
+  ) {
+    total: totalNum
+    questions: data {
+      title
+      titleSlug
+      topicTags {
+        name
+        slug
+      }
+    }
+  }
+}
+*/
