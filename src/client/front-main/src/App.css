@@ -1,28 +1,33 @@
 /*both are stored seperately and need to have commas to cover app*/
 html, #root{
-    background-color: blue;
+    background-color: #353535;
     margin: 0;
     padding: 0;
     border: none;
 }
 
 /*Styles for container which stores all the blocks*/
-.blockContainer{
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    box-sizing: border-box;
+.blockContainer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  /* background-color: white; */
+  padding: 20px;
+  border-radius: 10px;
 }
 
 /*Indivudal blcoks for each question */
-.block{
-    margin-top: 20px;
-    width: 800px;
-    height: 40px;
-    background-color: pink;
-    border-radius: 5px 5px 0 0;
+.block {
+  margin-top: 20px;
+  width: 800px;
+  height: auto;
+  background-color: #ffebcd ; 
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 10px;
 }
 
 
@@ -46,7 +51,7 @@ html, #root{
 
 /*Shuffle block for the queston that is shuffled */
 .shuffle{
-  border-radius: 5px;
+  border-radius: 10px;
   height: 60px;
   display: flex;
   justify-content: center;
@@ -59,7 +64,6 @@ html, #root{
 #shuffleButton{
   margin-top: 20px;
 }
-
 
 
 /* Core styles/functionality for the tab opening and closing */
@@ -86,31 +90,36 @@ html, #root{
     
   }
   .tab__label {
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     padding: 1rem;
     margin: 0;
     height: 40px;
-    border-radius:0 0 5px 5px;
-    background-color: pink;
+    border-radius:0 0 10px 10px;
+    background-color: rgb(255, 235, 205);
   }
   .tab__label::after {
     content: "\276F";
     text-align: center;
     transform: rotate(90deg);
     transition: all 0.35s;
-
+    margin-left: auto;
+    animation: bounce 1s infinite, rotate 0.3s ease forwards;
   }
   .tab input:checked + .tab__label::after {
     transform: rotate(270deg);
+    animation: rotate 0.3s ease;
   }
- 
+
+  /* .arrow.up {
+    transform: rotate(180deg);
+  } */
   
   .tab__close {
     justify-content: flex-end;
     padding: 0.5rem 1rem;
     font-size: 0.75rem;
-    border-radius: 0;
+    border-radius: 10px;
   }
   .accordion--radio {
     --theme: var(--secondary);
@@ -118,7 +127,7 @@ html, #root{
   
   /* Arrow animation */
   .tab input:not(:checked) + .tab__label:hover::after {
-    animation: bounce .5s infinite;
+    animation: bounce 1s infinite;
   }
   @keyframes bounce {
     25% {
@@ -128,25 +137,34 @@ html, #root{
       transform: rotate(90deg) translate(-.25rem);
     }
   }
+  @keyframes rotate {
+    0% {
+      transform: rotate(90deg);
+    }
+    100% {
+      transform: rotate(270deg);
+    }
+  }
   
 
 /*text area that holds comments */
-.questionComment{
-  width: 100%;
-  height: 100%;
+
+.questionComment {
+  width: 800px;
+  height: 100px; /* Set a specific height for better control */
   font-family: 'Courier New', Courier, monospace;
   font-size: 1rem;
-  font-weight: 400;
-  border-radius: 0 0 5px 5px;
-  border:  none;
-  background: pink;
-  resize: none;
+  font-weight: 550;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: thin #000000;
+  background: rgba(255, 235, 205, 0.9); /* Semi-transparent background */
+  resize: flex;
+  position: relative; /* Position relative for overlay within accordion */
+  z-index: 100; /* Higher z-index to overlay */
+  padding: 10px; /* Add padding for better text input */
 }
-.tab__content{
-  border-radius: 0 0 5px 5px;
-  width: 800px;
-}
-textarea:focus{
+textarea:focus {
   outline: none;
 }
 
@@ -154,3 +172,51 @@ textarea:focus{
   display: flex;
   flex-direction: column;
 }
+
+button {
+  background-color: rgb(210, 195, 170);
+  border: none;
+  color: black;
+  padding: 7px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 5px !important;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow:  0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  background-color: rgb(209, 165, 100);
+  box-shadow:  0 6px 8px rgba(0, 0, 0, 0.1);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* .questionComment{
+  width: 100%;
+  height: 100%;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  font-weight: 400;
+  border-radius: 0px;
+  border:  2px  thin black;
+  background: rgba(255, 182, 193, 0.9);
+  resize: none;
+  position: absolute; // Position absolute for overlay
+  top: 0;
+  left: 0;
+  z-index: 10; // Higher z-index to overlay
+}
+.tab__content{
+  border-radius: 2px;
+  width: 800px;
+}
+textarea:focus{
+  outline: none;
+} */

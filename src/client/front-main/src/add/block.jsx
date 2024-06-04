@@ -12,13 +12,12 @@ import { DeleteQuestion } from '../delete/deleteQuestion';
  * @param {Function} setIndex - The state setter function for updating the index state.
  * @returns {JSX.Element} The rendered block component.
  */
-export function Block({question, setQuestion, setIndex, addComment}) {
+export function Block({ question, setQuestion, setIndex, addComment }) {
     const [isChecked, setIsChecked] = useState(false);
     const [newText, setNewText] = useState(question.comment || "");
     const textareaRef = useRef(null); // Creating a ref
     const headerRef = useRef(null);
 
-    
     useEffect(() => {
         if (textareaRef.current) {
             textareaRef.current.style.height = 'auto'; // Reset the height
@@ -27,7 +26,6 @@ export function Block({question, setQuestion, setIndex, addComment}) {
     }, [newText, isChecked]);
 
     /**
-     * 
      * Handles the deletion of a question.
      */
     const handleDeleteQuestion = () => {
@@ -38,8 +36,7 @@ export function Block({question, setQuestion, setIndex, addComment}) {
         setIsChecked(!isChecked);
 
         if (headerRef.current) {
-            headerRef.current.style.borderRadius = isChecked ? '0 0 5px 5px' : '0';
-         
+            headerRef.current.style.borderRadius = isChecked ? '0 0 10px 10px' : '0';
         }
     };
 
@@ -54,42 +51,41 @@ export function Block({question, setQuestion, setIndex, addComment}) {
         }
     };
 
-    
-
     return (
         <div className='block-tab'>
-
             <div className="block" id={`block-${question.id}`}>
                 <span>{question.title}</span>
                 <button onClick={handleDeleteQuestion}>Delete</button>
             </div>
 
             <div className="tab">
-                  <label htmlFor={`cb-${question.id}`} ref={headerRef} className="tab__label">
+                <input
+                    type="checkbox"
+                    name={`accordion-${question.id}`}
+                    id={`cb-${question.id}`}
+                    checked={isChecked}
+                    onChange={handleCheckboxChange}
+                />
+                <label htmlFor={`cb-${question.id}`} ref={headerRef} className="tab__label">
                     Comments
-                    </label>
-                    <input 
-                        type="checkbox"
-                        name={`accordion-${question.id}`}
-                        id={`cb-${question.id}`}
-                        checked={isChecked}
-                        onChange={handleCheckboxChange}
-                    />
+                    <span className={isChecked ? "arrow up" : "arrow"}></span>
+                </label>
+                {isChecked && (
+                    <div className="tab__content">
+                        <div className="comments-box">
+                            <textarea
+                                className="questionComment"
+                                id={"textarea_" + question.id}
+                                ref={textareaRef} // Assigning the ref to the textarea
+                                type="text"
+                                value={newText}
+                                onChange={handleEdit}
+                                placeholder="Enter your comments here..."
+                            />
+                        </div>
+                    </div>
+                )}
             </div>
-
-             {isChecked && (
-                        <div className="tab__content">
-                             <textarea
-                             className="questionComment"
-                             id={"textarea_" + question.id}
-                             ref={textareaRef} // Assigning the ref to the textarea
-                             type="text"
-                             value={question.comment}
-                             onChange={handleEdit}
-                              />
-                       </div>
-              )}
-                    
-         </div>
+        </div>
     );
 }
