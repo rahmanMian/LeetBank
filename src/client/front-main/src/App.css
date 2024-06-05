@@ -1,6 +1,6 @@
 /*both are stored seperately and need to have commas to cover app*/
 html, #root{
-    background-color: #353535;
+    background-color: var(--background-color);
     margin: 0;
     padding: 0;
     border: none;
@@ -14,17 +14,16 @@ html, #root{
   align-items: center;
   flex-direction: column;
   box-sizing: border-box;
-  /* background-color: white; */
   padding: 20px;
   border-radius: 10px;
 }
 
-/*Indivudal blcoks for each question */
+/*Indivudal blocks for each question */
 .block {
   margin-top: 20px;
   width: 800px;
   height: auto;
-  background-color: #ffebcd ; 
+  background-color: var(--block-background-color); 
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   padding: 10px;
@@ -71,80 +70,77 @@ html, #root{
     width: 800px;
 }
 .tab input {
-    position: absolute;
-    opacity: 0;
-    z-index: -1;
-  }
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
 
-  .tab__content {
-    overflow: hidden;
-    transition: all 0.35s;
-    display: flex;
-    justify-content: center;
+.tab__content {
+  overflow: hidden;
+  transition: all 0.35s;
+  display: flex;
+  justify-content: center;
+}
+
+.tab__label,
+.tab__close {
+  display: flex;
+  cursor: pointer;
+  
+}
+.tab__label {
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1rem;
+  margin: 0;
+  height: 40px;
+  border-radius:0 0 10px 10px;
+  background-color: var(--block-background-color);
+}
+.tab__label::after {
+  content: "\276F";
+  text-align: center;
+  transform: rotate(90deg);
+  transition: all 0.35s;
+  margin-left: auto;
+  animation: bounce 1s infinite, rotate 0.3s ease forwards;
+}
+.tab input:checked + .tab__label::after {
+  transform: rotate(270deg);
+  animation: rotate 0.3s ease;
+}
+
+/* Arrow animation */
+.tab input:not(:checked) + .tab__label:hover::after {
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  25% {
+    transform: rotate(90deg) translate(.25rem);
   }
- 
-  .tab__label,
-  .tab__close {
-    display: flex;
-    cursor: pointer;
-    
+  75% {
+    transform: rotate(90deg) translate(-.25rem);
   }
-  .tab__label {
-    justify-content: flex-end;
-    align-items: center;
-    padding: 1rem;
-    margin: 0;
-    height: 40px;
-    border-radius:0 0 10px 10px;
-    background-color: rgb(255, 235, 205);
-  }
-  .tab__label::after {
-    content: "\276F";
-    text-align: center;
+}
+@keyframes rotate {
+  0% {
     transform: rotate(90deg);
-    transition: all 0.35s;
-    margin-left: auto;
-    animation: bounce 1s infinite, rotate 0.3s ease forwards;
   }
-  .tab input:checked + .tab__label::after {
+  100% {
     transform: rotate(270deg);
-    animation: rotate 0.3s ease;
   }
+}
 
-  /* .arrow.up {
-    transform: rotate(180deg);
-  } */
-  
-  .tab__close {
-    justify-content: flex-end;
-    padding: 0.5rem 1rem;
-    font-size: 0.75rem;
-    border-radius: 10px;
-  }
-  .accordion--radio {
-    --theme: var(--secondary);
-  }
-  
-  /* Arrow animation */
-  .tab input:not(:checked) + .tab__label:hover::after {
-    animation: bounce 1s infinite;
-  }
-  @keyframes bounce {
-    25% {
-      transform: rotate(90deg) translate(.25rem);
-    }
-    75% {
-      transform: rotate(90deg) translate(-.25rem);
-    }
-  }
-  @keyframes rotate {
-    0% {
-      transform: rotate(90deg);
-    }
-    100% {
-      transform: rotate(270deg);
-    }
-  }
+.tab__close {
+  justify-content: flex-end;
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  border-radius: 10px;
+}
+.accordion--radio {
+  --theme: var(--secondary);
+}
   
 
 /*text area that holds comments */
@@ -174,7 +170,7 @@ textarea:focus {
 }
 
 button {
-  background-color: rgb(210, 195, 170);
+  background-color: var(--button-background-color);
   border: none;
   color: black;
   padding: 7px 12px;
@@ -190,7 +186,7 @@ button {
 }
 
 button:hover {
-  background-color: rgb(209, 165, 100);
+  background-color: var(--button-hover-background-color);
   box-shadow:  0 6px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -219,4 +215,8 @@ button:active {
 }
 textarea:focus{
   outline: none;
+} */
+
+/* .arrow.up {
+  transform: rotate(180deg);
 } */
