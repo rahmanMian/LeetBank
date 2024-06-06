@@ -55,10 +55,9 @@ app.listen(5000, () => console.log('Server Running'));
 
 //potential tag i will use IA
 /*
-query problemsetQuestionList{
+{
   problemsetQuestionList: questionList(
-    categorySlug: ""
-    limit: 1
+    categorySlug: "",
     filters: {}
   ) {
     total: totalNum
@@ -72,4 +71,5 @@ query problemsetQuestionList{
     }
   }
 }
+
 */
