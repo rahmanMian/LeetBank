@@ -1,63 +1,20 @@
-const express = require('express');
-const expressGraphQL = require('express-graphql').graphqlHTTP;
-const fetch = require('node-fetch');
 
-const {
-    GraphQLSchema,
-    GraphQLObjectType,
-    GraphQLString,
-    GraphQLList,
-    GraphQLNonNull
-} = require('graphql');
+const express = require('express');
+const fetch = require('node-fetch');
 
 const app = express();
 
 
-const questions = [
-    {title: "Two Sum"
-    }
-]
 
-const QuestionType = new GraphQLObjectType({
-    name:"Question",
-    description: "This contains details containing title and URL of the question",
-    fields: () => ({
-        title: {type: GraphQLNonNull(GraphQLString)}
-    })
-})
+// LeetCode GraphQL endpoint
+const GRAPHQL_ENDPOINT = 'https://leetcode.com/graphql';
 
-const QuestionQueryType = new GraphQLObjectType({
-     name: "Query",
-     description: "Question Query extracting data",
-     fields: () =>({
-          questions: {
-            type: new GraphQLList(QuestionType),
-            description: "List of All Questions",
-            resolve: () => questions //this will be the data / objct you want to return
-          }
-        })
-     })
-
-
-const schema = new GraphQLSchema({
-    query: QuestionQueryType
-})
-
-app.use('/graphql', expressGraphQL({
-    schema: schema,
-    graphiql: true
-}));
-
-app.listen(5000, () => console.log('Server Running'));
-
-
-
-
-//potential tag i will use IA
-/*
+// GraphQL query
+const query = `
 {
   problemsetQuestionList: questionList(
     categorySlug: "",
+    limit:  4000,
     filters: {}
   ) {
     total: totalNum
@@ -71,5 +28,33 @@ app.listen(5000, () => console.log('Server Running'));
     }
   }
 }
+`;
 
-*/
+// Endpoint to fetch data
+app.get('/graphql', async (req, res) => {
+  try {
+    const response = await fetch(GRAPHQL_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({query}),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    res.json(data);
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    res.status(500).json({ error: 'Failed to fetch data' });
+  }
+});
+
+
+app.listen(5000, () => console.log('Server Running'));
+
+
+
