@@ -1,14 +1,15 @@
-import logger from "morgan";
 import express from "express";
+import logger from "morgan";
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import fetch from 'node-fetch';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const app = express();
 const port = 5000;
-const fetch = require('node-fetch');
+
 
 app.use(logger("dev"));
 app.use(express.json());
