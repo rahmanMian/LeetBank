@@ -155,7 +155,7 @@ html, #root{
   border-bottom-right-radius: 10px;
   border: thin #000000;
   background: rgba(255, 235, 205, 0.9); /* Semi-transparent background */
-  resize: flex;
+  resize: none;
   position: relative; /* Position relative for overlay within accordion */
   z-index: 100; /* Higher z-index to overlay */
   padding: 10px; /* Add padding for better text input */

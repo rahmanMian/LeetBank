@@ -1,8 +1,21 @@
+import logger from "morgan";
+import express from "express";
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
 
-const express = require('express');
-const fetch = require('node-fetch');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const app = express();
+const port = 5000;
+const fetch = require('node-fetch');
+
+app.use(logger("dev"));
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
+
+app.use('/', express.static(join(__dirname, '../client.front-main')));
+
 
 
 
@@ -30,22 +43,39 @@ const query = `
 }
 `;
 
-// Endpoint to fetch data
+/**
+ * Fetches data from the LeetCode GraphQL endpoint.
+ * 
+ * @async
+ * @function fetchGraphQLData
+ * @returns {Promise<Object>} The JSON response from the GraphQL API.
+ * @throws {Error} If the fetch operation fails.
+ */
+const fetchGraphQLData = async () => {
+  const response = await fetch(GRAPHQL_ENDPOINT, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ query }),
+  });
+
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
+  return response.json();
+};
+
+/**
+ * Endpoint to fetch data from the LeetCode GraphQL API.
+ * 
+ * @param {Object} req - Express request object.
+ * @param {Object} res - Express response object.
+ */
 app.get('/graphql', async (req, res) => {
   try {
-    const response = await fetch(GRAPHQL_ENDPOINT, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({query}),
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const data = await response.json();
+    const data = await fetchGraphQLData();
     res.json(data);
   } catch (error) {
     console.error('Error fetching data:', error);
@@ -53,8 +83,5 @@ app.get('/graphql', async (req, res) => {
   }
 });
 
-
-app.listen(5000, () => console.log('Server Running'));
-
-
-
+// Start the server
+app.listen(port, () => console.log('Server Running'));
