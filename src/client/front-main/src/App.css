@@ -1,28 +1,32 @@
 /*both are stored seperately and need to have commas to cover app*/
 html, #root{
-    background-color: blue;
+    background-color: var(--background-color);
     margin: 0;
     padding: 0;
     border: none;
 }
 
 /*Styles for container which stores all the blocks*/
-.blockContainer{
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    box-sizing: border-box;
+.blockContainer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 20px;
+  border-radius: 10px;
 }
 
-/*Indivudal blcoks for each question */
-.block{
-    margin-top: 20px;
-    width: 800px;
-    height: 40px;
-    background-color: pink;
-    border-radius: 5px 5px 0 0;
+/*Indivudal blocks for each question */
+.block {
+  margin-top: 20px;
+  width: 800px;
+  height: auto;
+  background-color: var(--block-background-color); 
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 10px;
 }
 
 
@@ -46,7 +50,7 @@ html, #root{
 
 /*Shuffle block for the queston that is shuffled */
 .shuffle{
-  border-radius: 5px;
+  border-radius: 10px;
   height: 60px;
   display: flex;
   justify-content: center;
@@ -61,92 +65,102 @@ html, #root{
 }
 
 
-
 /* Core styles/functionality for the tab opening and closing */
 .tab{
     width: 800px;
 }
 .tab input {
-    position: absolute;
-    opacity: 0;
-    z-index: -1;
-  }
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
 
-  .tab__content {
-    overflow: hidden;
-    transition: all 0.35s;
-    display: flex;
-    justify-content: center;
+.tab__content {
+  overflow: hidden;
+  transition: all 0.35s;
+  display: flex;
+  justify-content: center;
+}
+
+.tab__label,
+.tab__close {
+  display: flex;
+  cursor: pointer;
+  
+}
+.tab__label {
+  justify-content: flex-end;
+  align-items: center;
+  padding: 1rem;
+  margin: 0;
+  height: 40px;
+  border-radius:0 0 10px 10px;
+  background-color: var(--block-background-color);
+}
+.tab__label::after {
+  content: "\276F";
+  text-align: center;
+  transform: rotate(90deg);
+  transition: all 0.35s;
+  margin-left: auto;
+  animation: bounce 1s infinite, rotate 0.3s ease forwards;
+}
+.tab input:checked + .tab__label::after {
+  transform: rotate(270deg);
+  animation: rotate 0.3s ease;
+}
+
+/* Arrow animation */
+.tab input:not(:checked) + .tab__label:hover::after {
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  25% {
+    transform: rotate(90deg) translate(.25rem);
   }
- 
-  .tab__label,
-  .tab__close {
-    display: flex;
-    cursor: pointer;
-    
+  75% {
+    transform: rotate(90deg) translate(-.25rem);
   }
-  .tab__label {
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    margin: 0;
-    height: 40px;
-    border-radius:0 0 5px 5px;
-    background-color: pink;
-  }
-  .tab__label::after {
-    content: "\276F";
-    text-align: center;
+}
+@keyframes rotate {
+  0% {
     transform: rotate(90deg);
-    transition: all 0.35s;
-
   }
-  .tab input:checked + .tab__label::after {
+  100% {
     transform: rotate(270deg);
   }
- 
-  
-  .tab__close {
-    justify-content: flex-end;
-    padding: 0.5rem 1rem;
-    font-size: 0.75rem;
-    border-radius: 0;
-  }
-  .accordion--radio {
-    --theme: var(--secondary);
-  }
-  
-  /* Arrow animation */
-  .tab input:not(:checked) + .tab__label:hover::after {
-    animation: bounce .5s infinite;
-  }
-  @keyframes bounce {
-    25% {
-      transform: rotate(90deg) translate(.25rem);
-    }
-    75% {
-      transform: rotate(90deg) translate(-.25rem);
-    }
-  }
+}
+
+.tab__close {
+  justify-content: flex-end;
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  border-radius: 10px;
+}
+.accordion--radio {
+  --theme: var(--secondary);
+}
   
 
 /*text area that holds comments */
-.questionComment{
-  width: 100%;
-  height: 100%;
+
+.questionComment {
+  width: 800px;
+  height: 100px; /* Set a specific height for better control */
   font-family: 'Courier New', Courier, monospace;
   font-size: 1rem;
-  font-weight: 400;
-  border-radius: 0 0 5px 5px;
-  border:  none;
-  background: pink;
-  resize: none;
+  font-weight: 550;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border: thin #000000;
+  background: rgba(255, 235, 205, 0.9); /* Semi-transparent background */
+  resize: flex;
+  position: relative; /* Position relative for overlay within accordion */
+  z-index: 100; /* Higher z-index to overlay */
+  padding: 10px; /* Add padding for better text input */
 }
-.tab__content{
-  border-radius: 0 0 5px 5px;
-  width: 800px;
-}
-textarea:focus{
+textarea:focus {
   outline: none;
 }
 
@@ -154,3 +168,55 @@ textarea:focus{
   display: flex;
   flex-direction: column;
 }
+
+button {
+  background-color: var(--button-background-color);
+  border: none;
+  color: black;
+  padding: 7px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 5px !important;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow:  0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  background-color: var(--button-hover-background-color);
+  box-shadow:  0 6px 8px rgba(0, 0, 0, 0.1);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+/* .questionComment{
+  width: 100%;
+  height: 100%;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  font-weight: 400;
+  border-radius: 0px;
+  border:  2px  thin black;
+  background: rgba(255, 182, 193, 0.9);
+  resize: none;
+  position: absolute; // Position absolute for overlay
+  top: 0;
+  left: 0;
+  z-index: 10; // Higher z-index to overlay
+}
+.tab__content{
+  border-radius: 2px;
+  width: 800px;
+}
+textarea:focus{
+  outline: none;
+} */
+
+/* .arrow.up {
+  transform: rotate(180deg);
+} */
