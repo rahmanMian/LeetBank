@@ -24,6 +24,7 @@ html, #root{
   width: 800px;
   height: auto;
   background-color: var(--block-background-color); 
+  color: var(--block-text-color);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   padding: 10px;
@@ -154,7 +155,7 @@ html, #root{
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   border: thin #000000;
-  background: rgba(255, 235, 205, 0.9); /* Semi-transparent background */
+  background: var(--questioncomment-background-color); /* Semi-transparent background */
   resize: flex;
   position: relative; /* Position relative for overlay within accordion */
   z-index: 100; /* Higher z-index to overlay */
@@ -172,7 +173,7 @@ textarea:focus {
 button {
   background-color: var(--button-background-color);
   border: none;
-  color: black;
+  color: var(--button-text-color);
   padding: 7px 12px;
   text-align: center;
   text-decoration: none;
