@@ -15,7 +15,7 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
-app.use('/', express.static(join(__dirname, '../client.front-main')));
+app.use('/', express.static(join(__dirname, '../client/front-main/src/App.js')));
 
 
 
