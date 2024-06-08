@@ -1,12 +1,15 @@
 {
   "type": "module",
   "scripts": {
-    "devStart": "nodemon server.js"
+    "start:client": "cd ../client/front-main/src && npm start",
+    "start:server": "nodemon server.js",
+    "start": "concurrently \"npm run start:client\" \"npm run start:server\""
   },
   "dependencies": {
     "express": "^4.19.2",
     "express-graphql": "^0.12.0",
     "firebase-tools": "^13.9.0",
+    "http-proxy-middleware": "^3.0.0",
     "morgan": "^1.10.0"
   },
   "devDependencies": {

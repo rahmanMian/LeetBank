@@ -2,6 +2,7 @@ import express from "express";
 import logger from "morgan";
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import { createProxyMiddleware } from 'http-proxy-middleware';
 import fetch from 'node-fetch';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -15,7 +16,15 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
-app.use('/', express.static(join(__dirname, '../client/front-main/src/App.js')));
+// Proxy to React development server
+app.use(
+  '/',
+  createProxyMiddleware({
+    target: 'http://localhost:3000', // Ensure your React app runs on this port
+    changeOrigin: true,
+    ws: true, // Enable websocket proxying if needed
+  })
+);
 
 
 
