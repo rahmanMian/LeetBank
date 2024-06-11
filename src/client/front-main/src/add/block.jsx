@@ -55,7 +55,9 @@ export function Block({ question, setQuestion, setIndex, addComment }) {
         <div className='block-tab'>
             <div className="block" id={`block-${question.id}`}>
                 <span>{question.title}</span>
-                <button onClick={handleDeleteQuestion}>Delete</button>
+        <button onClick={handleDeleteQuestion} style={{ marginLeft: "8px" }}>
+          Delete
+        </button>
             </div>
 
             <div className="tab">
@@ -67,7 +69,8 @@ export function Block({ question, setQuestion, setIndex, addComment }) {
                     onChange={handleCheckboxChange}
                 />
                 <label htmlFor={`cb-${question.id}`} ref={headerRef} className="tab__label">
-                    Comments
+                <span style={{ color: "var(--comments-word-color)" }}>Comments</span>
+
                     <span className={isChecked ? "arrow up" : "arrow"}></span>
                 </label>
                 {isChecked && (

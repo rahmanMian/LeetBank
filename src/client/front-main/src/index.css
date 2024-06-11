@@ -1,21 +1,24 @@
 :root {
-  --background-color: #ffffff;
+  --background-color: #f4e2d0;
   --block-text-color: #000000;
   --button-text-color: #000000;
   --block-background-color: #edc78e;
-  --button-background-color: rgb(223, 203, 168);
-  --button-hover-background-color: rgb(209, 165, 100);
-  --questioncomment-background-color: #ffebcd;
+  --button-background-color: #f5e1b3;
+  --button-hover-background-color: #d29d6c;
+  --questioncomment-background-color: #f5e1b3;
+  --comments-word-color: #000000;
 }
 
 [data-theme="dark"] {
   --background-color: #121212;
   --block-text-color: #ffffff;
-  --button-text-color: #000000;
+  --button-text-color: #3b3b3b;
   --block-background-color: #3f3f3f;
   --button-background-color: #a688fa;
-  --button-hover-background-color: #777777;
-  --questioncomment-background-color: #8b8b8b;
+  --button-hover-background-color: #7a5fc9;
+  --questioncomment-background-color: #606060;
+  --comments-word-color: #d2d2d2;
+
 }
 
 body {

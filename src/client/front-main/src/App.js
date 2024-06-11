@@ -20,7 +20,7 @@ function App() {
     <div className="App">
       <header className="App-header">
       <button onClick={toggleDarkMode}>
-          {darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+          {darkMode ? "Let There Be Light 🌞" : "Escape to the Shadows 🌚"}
         </button>
       </header>
       </div>
