@@ -1,3 +1,4 @@
+import React, {useState} from "react";
 import { FaSearch} from "react-icons/fa";
 import "./searchBar.css";
 
@@ -10,13 +11,27 @@ import "./searchBar.css";
  * @returns {JSX.Element} blockContainer - Container containing div blocks.
  */
 export function SearchBar() {
+    const [input, setInput] = useState("");
+
+    const fetchData = (value) =>{
+        fetch("https://jsonplaceholder.typicode.com/users")
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+        });
+    }
+
+    const handleChange = (value) => {
+        setInput(value);
+        fetchData(value);
+
+    }
 
     return (
         <div className="searchContainer">
            <div className="input-wrapper">
             <FaSearch id="search-icon" />
-            <input placeholder="Type to search..." />
-
+            <input placeholder="Type to search..." value={input} onChange={(e) => handleChange(e.target.value)} />
            </div>
         </div>
     );
