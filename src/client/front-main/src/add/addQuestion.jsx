@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import "../App.css";
 import { CreateBlocks } from "./createBlocks";
 import { ShuffleOutput } from "../shuffle/shuffleOutput";
+import { SearchBar } from "./searchBar";
 
 
 /**
@@ -83,12 +84,14 @@ export function AddQuestion() {
     return (
         <>
            {/*allows you to add new blocks*/}
-            <form onSubmit={handleSubmit} className="new-item-form">
+            {/* <form onSubmit={handleSubmit} className="new-item-form">
                 <div className="form-row">
-                    <input id="addInput" placeholder="Add a note..." value={newItem} onChange={e => setNewItem(e.target.value)} />
+                    <input id="addInput" placeholder="Add a question" value={newItem} onChange={e => setNewItem(e.target.value)} />
                 </div>
-            </form>
-            
+            </form> */}
+
+             <SearchBar/>
+
             {/*Renders the shuffle block usiing an index generated*/}
             <ShuffleOutput questionArray={questions} setIndex={setIndex} index ={index}/>
             

@@ -16,16 +16,16 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
-// Proxy to React development server
+
+//proxy to react app
 app.use(
-  '/',
+  '/api', // Proxy only API requests
   createProxyMiddleware({
-    target: 'http://localhost:3000', // Ensure your React app runs on this port
+    target: 'http://localhost:3000',
     changeOrigin: true,
-    ws: true, // Enable websocket proxying if needed
+    ws: true,
   })
 );
-
 
 
 
