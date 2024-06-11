@@ -1,7 +1,7 @@
 import express from "express";
 import logger from "morgan";
 import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
+import { dirname } from 'path';
 import { createProxyMiddleware } from 'http-proxy-middleware';
 import fetch from 'node-fetch';
 
@@ -11,15 +11,13 @@ const __dirname = dirname(__filename);
 const app = express();
 const port = 5000;
 
-
 app.use(logger("dev"));
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 
-
-//proxy to react app
+// Proxy to React app
 app.use(
-  '/api', // Proxy only API requests
+  '/api',
   createProxyMiddleware({
     target: 'http://localhost:3000',
     changeOrigin: true,
@@ -27,30 +25,27 @@ app.use(
   })
 );
 
-
-
 // LeetCode GraphQL endpoint
 const GRAPHQL_ENDPOINT = 'https://leetcode.com/graphql';
 
-// GraphQL query
+// GraphQL query with dynamic filters
 const query = `
-{
-  problemsetQuestionList: questionList(
-    categorySlug: "",
-    limit:  4000,
-    filters: {}
-  ) {
-    total: totalNum
-    questions: data {
-      title
-      titleSlug
-      topicTags {
-        name
-        slug
+  query($filters: QuestionListFilterInput) {
+    problemsetQuestionList: questionList(
+      categorySlug: "",
+      filters: $filters
+    ) {
+      total: totalNum
+      questions: data {
+        title
+        titleSlug
+        topicTags {
+          name
+          slug
+        }
       }
     }
   }
-}
 `;
 
 /**
@@ -58,16 +53,20 @@ const query = `
  * 
  * @async
  * @function fetchGraphQLData
+ * @param {Object} filters - The filter object for the GraphQL query.
  * @returns {Promise<Object>} The JSON response from the GraphQL API.
  * @throws {Error} If the fetch operation fails.
  */
-const fetchGraphQLData = async () => {
+const fetchGraphQLData = async (filters) => {
   const response = await fetch(GRAPHQL_ENDPOINT, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ query }),
+    body: JSON.stringify({
+      query,
+      variables: { filters }, // Pass filters here
+    }),
   });
 
   if (!response.ok) {
@@ -77,15 +76,27 @@ const fetchGraphQLData = async () => {
   return response.json();
 };
 
+export default fetchGraphQLData;
 /**
- * Endpoint to fetch data from the LeetCode GraphQL API.
+ * Endpoint to fetch data from the LeetCode GraphQL API based on filters.
  * 
  * @param {Object} req - Express request object.
  * @param {Object} res - Express response object.
  */
-app.get('/graphql', async (req, res) => {
+app.post('/graphql', async (req, res) => {
+  const { searchKeywords } = req.body;
+
+  // Validate input
+  if (!searchKeywords || typeof searchKeywords !== 'string') {
+    return res.status(400).json({ error: 'Invalid searchKeywords parameter' });
+  }
+
+  const filters = {
+    searchKeywords,
+  };
+
   try {
-    const data = await fetchGraphQLData();
+    const data = await fetchGraphQLData(filters);
     res.json(data);
   } catch (error) {
     console.error('Error fetching data:', error);
@@ -94,4 +105,4 @@ app.get('/graphql', async (req, res) => {
 });
 
 // Start the server
-app.listen(port, () => console.log('Server Running'));
+app.listen(port, () => console.log(`Server running on http://localhost:${port}`));
