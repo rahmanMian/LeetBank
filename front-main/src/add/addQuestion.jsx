@@ -4,6 +4,7 @@ import "../App.css";
 import { CreateBlocks } from "./createBlocks";
 import { ShuffleOutput } from "../shuffle/shuffleOutput";
 import { SearchBar } from "./searchBar";
+import { SearchBlocks} from "./searchBlocks";
 
 
 /**
@@ -21,6 +22,8 @@ export function AddQuestion() {
         if (localValue === null) return [];
         return JSON.parse(localValue);
     });
+
+    const [results , setResults] = useState([]);
 
    
 
@@ -89,8 +92,10 @@ export function AddQuestion() {
                     <input id="addInput" placeholder="Add a question" value={newItem} onChange={e => setNewItem(e.target.value)} />
                 </div>
             </form> */}
-
-             <SearchBar/>
+             <div className="searchContainer">
+             <SearchBar setResults={setResults}/>
+             <SearchBlocks results = {results} addQuestion={addQuestion}/>
+             </div>
 
             {/*Renders the shuffle block usiing an index generated*/}
             <ShuffleOutput questionArray={questions} setIndex={setIndex} index ={index}/>

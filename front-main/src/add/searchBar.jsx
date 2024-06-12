@@ -11,7 +11,7 @@ import Axios from "axios";
  * @param {Object[]} questionArray - Array of question objects.
  * @returns {JSX.Element} blockContainer - Container containing div blocks.
  */
-export function SearchBar() {
+export function SearchBar({setResults}) {
     const [input, setInput] = useState("");
 
    
@@ -24,21 +24,26 @@ export function SearchBar() {
         if (value.length >= 3) {
             try {
                 const response = await Axios.post("http://localhost:5000/graphql", { searchKeywords: value });
-                console.log('Fetched data:', response.data);
+                const questionArray =  response.data.data.problemsetQuestionList.questions;
+                const results =  questionArray.filter((question) => {
+                    return value && question && question.title && question.title.toLowerCase().includes(value);
+                });
+                setResults(results);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         } else {
             console.log('Input is less than 3 characters, skipping fetch');
+            setResults([]);
         }
     };
 
     return (
-        <div className="searchContainer">
+        <>
            <div className="input-wrapper">
             <FaSearch id="search-icon" />
             <input placeholder="Type to search..." value={input} onChange={(e) => handleChange(e.target.value)} />
            </div>
-        </div>
+        </>
     );
 };

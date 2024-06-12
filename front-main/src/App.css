@@ -197,9 +197,9 @@ button:active {
 
 /*Search Bar CSS*/
 .searchContainer{
-  background-color: pink;
+  background-color: transparent;
   width: 20%;
-  height: 30vh;
+  height: 40vh;
   margin: auto;
   margin-top: 20vh;
   display: flex;
