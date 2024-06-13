@@ -70,14 +70,20 @@ export function AddQuestion() {
      * @param {string} title - The title of the new question.
      */
     function addQuestion(title) {
-        const newQuestion = {
-            id: uuidv4(), // Generate unique ID for question
-            title: title,
-            comment: ""
-        };
-        setQuestion(questions => [newQuestion, ...questions]);
+        // Check if the question already exists
+        const questionExists = questions.some(question => question.title === title);
+    
+        if (questionExists) {
+            alert("Question already added!");
+        } else {
+            const newQuestion = {
+                id: uuidv4(),
+                title: title,
+                comment: ""
+            };
+            setQuestion(questions => [newQuestion, ...questions]);
+        }
     }
-
     
 
     function addComment(id, comment) {
