@@ -12,18 +12,26 @@ import Axios from "axios";
  * @returns {JSX.Element} blockContainer - Container containing div blocks.
  */
 export function SearchBar({setResults, input, setInput}) {
-    
 
+    
     const handleChange = async (value) => {
         setInput(value);
+        
         // Check if the input length is at least 3 characters
         if (value.length >= 3) {
             try {
                 const response = await Axios.post("http://localhost:5000/graphql", { searchKeywords: value });
-                const questionArray =  response.data.data.problemsetQuestionList.questions;
-                const results =  questionArray.filter((question) => {
-                    return value && question && question.title && question.title.toLowerCase().includes(value);
+                const questionArray = response.data.data.problemsetQuestionList.questions;
+                const lowercaseValue = value.toLowerCase(); // Convert to lowercase directly
+        
+                // Filter questions based on lowercase versions of value and question title
+                const results = questionArray.filter((question) => {
+                    const lowercaseTitle = question.title.toLowerCase(); // Convert title to lowercase
+        
+                    // Check for exact match or partial match
+                    return lowercaseTitle.includes(lowercaseValue) || lowercaseValue.includes(lowercaseTitle);
                 });
+        
                 setResults(results);
                 console.log(results);
             } catch (error) {
@@ -34,6 +42,9 @@ export function SearchBar({setResults, input, setInput}) {
             setResults([]);
         }
     };
+    
+    
+    
 
 
    
