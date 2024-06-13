@@ -1,11 +1,16 @@
 import React from 'react'
 import "./searchBlock.css";
 
-export const SearchBlock = ({result, addQuestion}) => {
+export const SearchBlock = ({result, addQuestion, setInput}) => {
+  
+
+
   const handleClick = () => {
-    // Toggle color between blue and red
     addQuestion(result.title);
+    setInput('');  // Clear the input
+    window.location.reload();  //ensuures search bar is reset
   };
+
   return (
     <div className="search-result" onClick={handleClick}>{result.title}</div>
   )

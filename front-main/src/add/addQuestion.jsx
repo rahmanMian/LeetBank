@@ -22,8 +22,13 @@ export function AddQuestion() {
         if (localValue === null) return [];
         return JSON.parse(localValue);
     });
+    
 
+    //array for list of preffered vals
     const [results , setResults] = useState([]);
+
+    //to use for question input
+    const [input, setInput] = useState("");
 
    
 
@@ -92,9 +97,10 @@ export function AddQuestion() {
                     <input id="addInput" placeholder="Add a question" value={newItem} onChange={e => setNewItem(e.target.value)} />
                 </div>
             </form> */}
+
              <div className="searchContainer">
-             <SearchBar setResults={setResults}/>
-             <SearchBlocks results = {results} addQuestion={addQuestion}/>
+             <SearchBar setResults={setResults} setInput = {setInput}/>
+             <SearchBlocks results = {results} addQuestion={addQuestion} setInput={setInput}/>
              </div>
 
             {/*Renders the shuffle block usiing an index generated*/}

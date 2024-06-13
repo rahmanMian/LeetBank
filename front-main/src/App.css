@@ -4,6 +4,7 @@ html, #root{
     margin: 0;
     padding: 0;
     border: none;
+    overflow-x: hidden;
 }
 
 /*Styles for container which stores all the blocks*/
@@ -159,6 +160,8 @@ html, #root{
   position: relative; /* Position relative for overlay within accordion */
   z-index: 100; /* Higher z-index to overlay */
   padding: 10px; /* Add padding for better text input */
+  max-height: 700px;
+  overflow-y: auto;
 }
 textarea:focus {
   outline: none;
@@ -199,9 +202,8 @@ button:active {
 .searchContainer{
   background-color: transparent;
   width: 20%;
-  height: 40vh;
+  height: 23vh;
   margin: auto;
-  margin-top: 20vh;
   display: flex;
   flex-direction: column;
   justify-content: center;

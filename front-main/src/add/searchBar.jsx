@@ -11,15 +11,11 @@ import Axios from "axios";
  * @param {Object[]} questionArray - Array of question objects.
  * @returns {JSX.Element} blockContainer - Container containing div blocks.
  */
-export function SearchBar({setResults}) {
-    const [input, setInput] = useState("");
-
-   
-
+export function SearchBar({setResults, input, setInput}) {
+    
 
     const handleChange = async (value) => {
         setInput(value);
-    
         // Check if the input length is at least 3 characters
         if (value.length >= 3) {
             try {
@@ -38,11 +34,14 @@ export function SearchBar({setResults}) {
         }
     };
 
+
+   
+
     return (
         <>
            <div className="input-wrapper">
             <FaSearch id="search-icon" />
-            <input placeholder="Type to search..." value={input} onChange={(e) => handleChange(e.target.value)} />
+            <input placeholder="Type to search..." id="questionInput" value={input} onChange={(e) => handleChange(e.target.value)} />
            </div>
         </>
     );
