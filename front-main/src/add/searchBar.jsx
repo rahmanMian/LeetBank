@@ -20,7 +20,7 @@ export function SearchBar({setResults, input, setInput}) {
         // Check if the input length is at least 3 characters
         if (value.length >= 3) {
             try {
-                const response = await Axios.post("http://localhost:5000/graphql", { searchKeywords: value });
+                const response = await Axios.post("http://localhost:5001/graphql", { searchKeywords: value });
                 const questionArray = response.data.data.problemsetQuestionList.questions;
                 const lowercaseValue = value.toLowerCase(); // Convert to lowercase directly
         

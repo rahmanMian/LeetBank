@@ -90,4 +90,4 @@ app.post('/graphql', async (req, res) => {
   }
 });
 
-app.listen(5000, ()=>console.log("app is running"));
+app.listen(5001, ()=>console.log("app is running"));
