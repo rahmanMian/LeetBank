@@ -75,7 +75,7 @@ export function AddQuestion() {
             title: title,
             comment: ""
         };
-        setQuestion(questions => [...questions, newQuestion]);
+        setQuestion(questions => [newQuestion, ...questions]);
     }
 
     
