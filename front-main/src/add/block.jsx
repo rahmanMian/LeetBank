@@ -33,8 +33,8 @@ export function Block({ question, setQuestion, setIndex, addComment }) {
     };
 
     const handleCheckboxChange = () => {
-        setIsChecked(!isChecked);
 
+        setIsChecked(!isChecked);
         if (headerRef.current) {
             headerRef.current.style.borderRadius = isChecked ? '0 0 10px 10px' : '0';
         }
@@ -54,7 +54,7 @@ export function Block({ question, setQuestion, setIndex, addComment }) {
     return (
         <div className='block-tab'>
             <div className="block" id={`block-${question.id}`}>
-                <span>{question.title}</span>
+                <a className="question-link" href={`https://leetcode.com/problems/${question.titleSlug}`}>{question.title}</a>
                 <button onClick={handleDeleteQuestion}>Delete</button>
             </div>
 

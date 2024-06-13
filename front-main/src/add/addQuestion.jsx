@@ -69,7 +69,7 @@ export function AddQuestion() {
      * @function addQuestion
      * @param {string} title - The title of the new question.
      */
-    function addQuestion(title) {
+    function addQuestion(title, titleSlug) {
         // Check if the question already exists
         const questionExists = questions.some(question => question.title === title);
     
@@ -79,6 +79,7 @@ export function AddQuestion() {
             const newQuestion = {
                 id: uuidv4(),
                 title: title,
+                titleSlug: titleSlug,
                 comment: ""
             };
             setQuestion(questions => [newQuestion, ...questions]);

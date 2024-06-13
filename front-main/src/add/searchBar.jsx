@@ -25,6 +25,7 @@ export function SearchBar({setResults, input, setInput}) {
                     return value && question && question.title && question.title.toLowerCase().includes(value);
                 });
                 setResults(results);
+                console.log(results);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }

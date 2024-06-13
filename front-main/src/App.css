@@ -210,3 +210,14 @@ button:active {
   align-items: center;
   min-width: 300px;
 }
+
+
+/*question anchor styling*/
+.question-link{
+  color: black;
+  text-decoration: none;
+}
+
+.question-link:hover{
+  text-decoration: underline;
+}

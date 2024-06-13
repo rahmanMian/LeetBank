@@ -19,7 +19,6 @@ export function ShuffleOutput({ questionArray , setIndex, index}) {
     const handleShuffle = () => {
         const newIndex = Math.floor(Math.random() * questionArray.length);
         setIndex(newIndex);
-        console.log(newIndex);
     };
 
     return (
