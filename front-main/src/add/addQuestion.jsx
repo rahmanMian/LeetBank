@@ -17,6 +17,7 @@ import { SearchBlocks} from "./searchBlocks";
  */
 export function AddQuestion() {
 
+    //gets the locally stored values of questions stored
     const [questions, setQuestion] = useState(() => {
         const localValue = localStorage.getItem('QUESTIONS');
         if (localValue === null) return [];
@@ -30,22 +31,22 @@ export function AddQuestion() {
     //to use for question input
     const [input, setInput] = useState("");
 
-   
-
+    //locally stores questions added my users 
     useEffect(() => {
         localStorage.setItem("QUESTIONS", JSON.stringify(questions));
     }, [questions]);
 
 
-   //for storage mangemt of the user input for shuffle 
+    //for storage mangemt of the user input for shuffle 
     const [newItem, setNewItem] = useState("");
 
-
+    //locally stores the index for randow shuffle
     const [index, setIndex] = useState(() => {
         const index = sessionStorage.getItem('shuffledIndex');
         return index !== null ? parseInt(index) : Number.MAX_SAFE_INTEGER;
     });
 
+    //stores 
     useEffect(() => {
             sessionStorage.setItem('shuffledIndex', index);
     }, [index]);
@@ -67,6 +68,7 @@ export function AddQuestion() {
      * Adds a new question to the state.
      *
      * @function addQuestion
+     * @author Rahman Mian
      * @param {string} title - The title of the new question.
      */
     function addQuestion(title, titleSlug) {
@@ -87,8 +89,16 @@ export function AddQuestion() {
     }
     
 
+     /**
+     * Adds a new question to the state.
+     *
+     * @function addQuestion
+     * @author Rahman Mian
+     * @param {string} id - The title of the question.
+     * @param {string} comment - comment user adds
+     */
     function addComment(id, comment) {
-        setQuestion(questions => 
+        setQuestion(questions => //questions => // questions.map is for robust state management in react 
             questions.map(question => 
                 question.id === id ? { ...question, comment: comment } : question
             )
@@ -98,13 +108,7 @@ export function AddQuestion() {
 
     return (
         <>
-           {/*allows you to add new blocks*/}
-            {/* <form onSubmit={handleSubmit} className="new-item-form">
-                <div className="form-row">
-                    <input id="addInput" placeholder="Add a question" value={newItem} onChange={e => setNewItem(e.target.value)} />
-                </div>
-            </form> */}
-
+          
              <div className="searchContainer">
              <SearchBar setResults={setResults} setInput = {setInput}/>
              <SearchBlocks results = {results} addQuestion={addQuestion} setInput={setInput}/>

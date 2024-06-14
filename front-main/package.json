@@ -29,6 +29,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "yurr": "cd src/server && npm start",
+    "dev": "concurrently \"npm run start\" \"npm run yurr\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
