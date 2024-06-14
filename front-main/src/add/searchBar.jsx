@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import { FaSearch} from "react-icons/fa";
 import "./searchBar.css";
 import Axios from "axios";
@@ -18,7 +18,7 @@ export function SearchBar({setResults, input, setInput}) {
         setInput(value);
         
         // Check if the input length is at least 3 characters
-        if (value.length >= 3) {
+       
             try {
                 const response = await Axios.post("http://localhost:5001/graphql", { searchKeywords: value });
                 const questionArray = response.data.data.problemsetQuestionList.questions;
@@ -27,7 +27,7 @@ export function SearchBar({setResults, input, setInput}) {
                 // Filter questions based on lowercase versions of value and question title
                 const results = questionArray.filter((question) => {
                     const lowercaseTitle = question.title.toLowerCase(); // Convert title to lowercase
-        
+
                     // Check for exact match or partial match
                     return lowercaseTitle.includes(lowercaseValue) || lowercaseValue.includes(lowercaseTitle);
                 });
@@ -37,10 +37,6 @@ export function SearchBar({setResults, input, setInput}) {
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
-        } else {
-            console.log('Input is less than 3 characters, skipping fetch');
-            setResults([]);
-        }
     };
     
     
