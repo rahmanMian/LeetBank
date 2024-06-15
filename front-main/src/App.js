@@ -1,5 +1,6 @@
 import './App.css';
 import {AddQuestion} from './add/addQuestion.jsx';
+import {LoginPage} from './login/loginPage.jsx';
 import React, { useState } from 'react';
 
 function App() {
@@ -17,14 +18,15 @@ function App() {
 
   return (
     <>
-    <div className="App">
+    {/* <div className="App">
       <header className="App-header">
       <button onClick={toggleDarkMode}>
           {darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
         </button>
       </header>
       </div>
-      <AddQuestion />
+      <AddQuestion /> */}
+      <LoginPage />
     </>
   );
 }
