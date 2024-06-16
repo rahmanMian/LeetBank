@@ -215,7 +215,7 @@ export const LoginPage = () => {
               <img
                 src={image1}
                 className={`image img-1 ${activeBullet === 1 ? "show" : ""}`}
-                alt="Store your LeetCode Questions"
+                alt="Access your solved LeetCode Questions"
               />
               <img
                 src={image2}
@@ -235,7 +235,7 @@ export const LoginPage = () => {
                   className="text-group"
                   style={{ transform: `translateY(${-(activeBullet - 1) * 2.2}rem)` }}
                 >
-                  <h2>Store your LeetCode Questions</h2>
+                  <h2>Access your LeetCode Questions</h2>
                   <h2>Store your Solutions</h2>
                   <h2>Filter from multiple options</h2>
                 </div>

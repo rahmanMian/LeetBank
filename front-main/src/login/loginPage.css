@@ -100,6 +100,7 @@ form.sign-up-form {
   font-weight: 400;
   font-size: 0.75rem;
   display: inline;
+  margin-right: 2px;
 }
 
 .toggle {
