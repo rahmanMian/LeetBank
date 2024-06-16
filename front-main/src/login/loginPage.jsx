@@ -2,13 +2,29 @@ import React, {useState, useEffect} from 'react';
 import logo from '../img/logo.png'; // Adjust the path as per your folder structure
 import image1 from '../img/image1.png';
 import image2 from '../img/image2.png';
-import image3 from '../img/image3.png';
+import image3 from '../img/image3.png'
+import {CustomAlert} from './customAlert';
 import './loginPage.css'; // Adjust the path as per your folder structure
 
 export const LoginPage = () => {
   const [isSignUpMode, setSignUpMode] = useState(false);
   const [activeBullet, setActiveBullet] = useState(1);
   const [inputFocus, setInputFocus] = useState({});
+  const [password1, setPassword1] = useState("");
+  const [password2, setPassword2] = useState("");
+  const [showAlert, setShowAlert] = useState(false);
+
+  
+  const handleShowAlert = () => {
+    setShowAlert(true);
+  };
+
+  const handleCloseAlert = () => {
+    setShowAlert(false);
+  };
+
+
+
 
   const handleFocus = (index) => {
     setInputFocus({ ...inputFocus, [index]: true });
@@ -41,6 +57,26 @@ export const LoginPage = () => {
       // Clean up the interval on component unmount
       return () => clearInterval(intervalId);
     }, []);
+
+    const handlePassword1Change = (event) => {
+      const newPassword1 = event.target.value;
+      setPassword1(newPassword1);
+    };
+  
+    const handlePassword2Change = (event) => {
+      const newPassword2 = event.target.value;
+      setPassword2(newPassword2);
+    };
+
+
+
+    const handleSubmit = (event) =>{
+
+      if(password1 !== password2){
+        event.preventDefault();
+        setShowAlert();
+      }
+    }
 
   return (
     <main className={isSignUpMode ? "sign-up-mode" : ""}>
@@ -133,7 +169,9 @@ export const LoginPage = () => {
                     minLength="4"
                     className="input-field"
                     placeholder="Password"
+                    id="choosePassword"
                     autoComplete="off"
+                    onChange={handlePassword1Change}
                     onFocus={() => handleFocus(4)}
                     onBlur={(e) => handleBlur(4, e.target.value)}
                     required
@@ -145,7 +183,9 @@ export const LoginPage = () => {
                     type="password"
                     className="input-field"
                     placeholder="Confirm Password"
+                    id="confirmPassword"
                     autoComplete="off"
+                    onChange={handlePassword2Change}
                     onFocus={() => handleFocus(5)}
                     onBlur={(e) => handleBlur(5, e.target.value)}
                     required
@@ -153,7 +193,15 @@ export const LoginPage = () => {
                 </div>
 
 
-                <input type="submit" value="Sign Up" className="sign-btn" />
+                <input type="submit" value="Sign Up" className="sign-btn" onClick={handleSubmit}/>
+                            
+              {showAlert && (
+                <CustomAlert
+                  message="Passwords do not match. Please try again."
+                  onClose={handleCloseAlert}
+                />
+              )}
+
 
                 <p className="text">
                   By signing up, I agree to the <a href="#">Terms of Services</a> and <a href="#">Privacy Policy</a>
@@ -177,7 +225,7 @@ export const LoginPage = () => {
               <img
                 src={image3}
                 className={`image img-3 ${activeBullet === 3 ? "show" : ""}`}
-                alt="Invite students to your class"
+                alt="Filter from multiple options"
               />
             </div>
 
