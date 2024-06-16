@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState, useEffect} from 'react';
 import logo from '../img/logo.png'; // Adjust the path as per your folder structure
 import image1 from '../img/image1.png';
 import image2 from '../img/image2.png';
@@ -26,6 +26,21 @@ export const LoginPage = () => {
   const moveSlider = (index) => {
     setActiveBullet(index);
   };
+
+    // Function to automatically move the slider
+    const autoMoveSlider = () => {
+      setActiveBullet((prev) => (prev % 3) + 1);
+    };
+  
+    // Use effect to set up interval for automatic sliding
+    useEffect(() => {
+      const intervalId = setInterval(() => {
+        autoMoveSlider();
+      }, 5000); // Change image every 5 seconds
+  
+      // Clean up the interval on component unmount
+      return () => clearInterval(intervalId);
+    }, []);
 
   return (
     <main className={isSignUpMode ? "sign-up-mode" : ""}>
@@ -82,6 +97,7 @@ export const LoginPage = () => {
               </div>
             </form>
 
+              {/*Sign up form*/ }
             <form autoComplete="off" className="sign-up-form">
               <div className="logo">
                 <img src={logo} alt="LeetBank" />
@@ -113,7 +129,8 @@ export const LoginPage = () => {
 
                 <div className={`input-wrap ${inputFocus[4] ? "active" : ""}`}>
                   <input
-                    type="email"
+                    type="password"
+                    minLength="4"
                     className="input-field"
                     placeholder="Password"
                     autoComplete="off"
@@ -126,8 +143,8 @@ export const LoginPage = () => {
                 <div className={`input-wrap ${inputFocus[5] ? "active" : ""}`}>
                   <input
                     type="password"
-                    minLength="4"
                     className="input-field"
+                    placeholder="Confirm Password"
                     autoComplete="off"
                     onFocus={() => handleFocus(5)}
                     onBlur={(e) => handleBlur(5, e.target.value)}
@@ -135,12 +152,11 @@ export const LoginPage = () => {
                   />
                 </div>
 
+
                 <input type="submit" value="Sign Up" className="sign-btn" />
 
                 <p className="text">
-                  By signing up, I agree to the
-                  <a href="#">Terms of Services</a> and
-                  <a href="#">Privacy Policy</a>
+                  By signing up, I agree to the <a href="#">Terms of Services</a> and <a href="#">Privacy Policy</a>
                 </p>
               </div>
             </form>
@@ -151,12 +167,12 @@ export const LoginPage = () => {
               <img
                 src={image1}
                 className={`image img-1 ${activeBullet === 1 ? "show" : ""}`}
-                alt="Create your own courses"
+                alt="Store your LeetCode Questions"
               />
               <img
                 src={image2}
                 className={`image img-2 ${activeBullet === 2 ? "show" : ""}`}
-                alt="Customize as you like"
+                alt="Store your Solutions"
               />
               <img
                 src={image3}
@@ -171,9 +187,9 @@ export const LoginPage = () => {
                   className="text-group"
                   style={{ transform: `translateY(${-(activeBullet - 1) * 2.2}rem)` }}
                 >
-                  <h2>Create your own courses</h2>
-                  <h2>Customize as you like</h2>
-                  <h2>Invite students to your class</h2>
+                  <h2>Store your LeetCode Questions</h2>
+                  <h2>Store your Solutions</h2>
+                  <h2>Filter from multiple options</h2>
                 </div>
               </div>
 
