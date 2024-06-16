@@ -74,7 +74,7 @@ export const LoginPage = () => {
 
       if(password1 !== password2){
         event.preventDefault();
-        setShowAlert();
+        handleShowAlert();
       }
     }
 
