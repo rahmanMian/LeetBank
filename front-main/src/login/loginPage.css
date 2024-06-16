@@ -17,7 +17,7 @@ main {
   width: 100%;
   min-height: 100vh;
   overflow: hidden;
-  background-color: #ff8c6b;
+  background: linear-gradient(to bottom right, #a4d067 50%, #ff914c 50%);
   padding: 2rem;
   display: flex;
   align-items: center;
@@ -79,13 +79,12 @@ form.sign-up-form {
 }
 
 .logo img {
-  width: 27px;
+  width: 70px;
   margin-right: 0.3rem;
 }
 
-.logo h4 {
-  font-size: 1.1rem;
-  margin-top: -9px;
+.logo h2 { 
+  margin-top: 10px;
   letter-spacing: -0.5px;
   color: #151111;
 }

@@ -34,8 +34,8 @@ export const LoginPage = () => {
           <div className="forms-wrap">
             <form autoComplete="off" className="sign-in-form">
               <div className="logo">
-                <img src={logo} alt="easyclass" />
-                <h4>easyclass</h4>
+                <img src={logo} alt="LeetBank" />
+                <h2>LeetBank</h2>
               </div>
 
               <div className="heading">
@@ -52,12 +52,12 @@ export const LoginPage = () => {
                     type="text"
                     minLength="4"
                     className="input-field"
+                    placeholder= "Email"
                     autoComplete="off"
                     onFocus={() => handleFocus(1)}
                     onBlur={(e) => handleBlur(1, e.target.value)}
                     required
                   />
-                  <label>Name</label>
                 </div>
 
                 <div className={`input-wrap ${inputFocus[2] ? "active" : ""}`}>
@@ -65,12 +65,12 @@ export const LoginPage = () => {
                     type="password"
                     minLength="4"
                     className="input-field"
+                    placeholder="Password"
                     autoComplete="off"
                     onFocus={() => handleFocus(2)}
                     onBlur={(e) => handleBlur(2, e.target.value)}
                     required
                   />
-                  <label>Password</label>
                 </div>
 
                 <input type="submit" value="Sign In" className="sign-btn" />
@@ -84,8 +84,8 @@ export const LoginPage = () => {
 
             <form autoComplete="off" className="sign-up-form">
               <div className="logo">
-                <img src={logo} alt="easyclass" />
-                <h4>easyclass</h4>
+                <img src={logo} alt="LeetBank" />
+                <h2>LeetBank</h2>
               </div>
 
               <div className="heading">
@@ -101,25 +101,26 @@ export const LoginPage = () => {
                   <input
                     type="text"
                     minLength="4"
+                    placeholder="Email"
                     className="input-field"
                     autoComplete="off"
                     onFocus={() => handleFocus(3)}
                     onBlur={(e) => handleBlur(3, e.target.value)}
                     required
                   />
-                  <label>Name</label>
+
                 </div>
 
                 <div className={`input-wrap ${inputFocus[4] ? "active" : ""}`}>
                   <input
                     type="email"
                     className="input-field"
+                    placeholder="Password"
                     autoComplete="off"
                     onFocus={() => handleFocus(4)}
                     onBlur={(e) => handleBlur(4, e.target.value)}
                     required
                   />
-                  <label>Email</label>
                 </div>
 
                 <div className={`input-wrap ${inputFocus[5] ? "active" : ""}`}>
@@ -132,7 +133,6 @@ export const LoginPage = () => {
                     onBlur={(e) => handleBlur(5, e.target.value)}
                     required
                   />
-                  <label>Password</label>
                 </div>
 
                 <input type="submit" value="Sign Up" className="sign-btn" />
