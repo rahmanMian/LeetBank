@@ -66,9 +66,13 @@ export function Block({ question, setQuestion, setIndex, addComment }) {
                     checked={isChecked}
                     onChange={handleCheckboxChange}
                 />
-                <label htmlFor={`cb-${question.id}`} ref={headerRef} className="tab__label">
+                <label 
+                    htmlFor={`cb-${question.id}`} 
+                    ref={headerRef} 
+                    className="tab__label"
+                >
                     Comments
-                    <span className={isChecked ? "arrow up" : "arrow"}></span>
+                        <span className={isChecked ? "arrow up" : "arrow"}></span>
                 </label>
                 {isChecked && (
                     <div className="tab__content">
