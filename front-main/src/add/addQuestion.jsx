@@ -37,8 +37,6 @@ export function AddQuestion() {
     }, [questions]);
 
 
-    //for storage mangemt of the user input for shuffle 
-    const [newItem, setNewItem] = useState("");
 
     //locally stores the index for randow shuffle
     const [index, setIndex] = useState(() => {
@@ -51,18 +49,6 @@ export function AddQuestion() {
             sessionStorage.setItem('shuffledIndex', index);
     }, [index]);
 
-    /**
-     * Handles form submission to add a new question.
-     *
-     * @function handleSubmit
-     * @param {Event} e - The form submission event.
-     */
-    function handleSubmit(e) {
-        e.preventDefault();
-        if (newItem === "") return;
-        addQuestion(newItem);
-        setNewItem("");
-    }
 
     /**
      * Adds a new question to the state.

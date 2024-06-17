@@ -54,7 +54,7 @@ export function Block({ question, setQuestion, setIndex, addComment }) {
     return (
         <div className='block-tab'>
             <div className="block" id={`block-${question.id}`}>
-                <a className="question-link" href={`https://leetcode.com/problems/${question.titleSlug}`}  target="_blank">{question.title}</a>
+                <a className="question-link" href={`https://leetcode.com/problems/${question.titleSlug}`}  target="_blank" rel="noreferrer">{question.title}</a>
                 <button onClick={handleDeleteQuestion}>Delete</button>
             </div>
 
