@@ -18,15 +18,15 @@ function App() {
 
   return (
     <>
-    {/* <div className="App">
+    <div className="App">
       <header className="App-header">
       <button onClick={toggleDarkMode}>
           {darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
         </button>
       </header>
       </div>
-      <AddQuestion /> */}
-      <LoginPage />
+      <AddQuestion />
+      {/* <LoginPage /> */}
     </>
   );
 }

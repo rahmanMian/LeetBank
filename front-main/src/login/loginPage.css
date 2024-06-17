@@ -135,7 +135,7 @@ form.sign-up-form {
   transition: 0.4s;
 }
 
-label {
+/* label {
   position: absolute;
   left: 0;
   top: 50%;
@@ -144,7 +144,7 @@ label {
   color: #bbb;
   pointer-events: none;
   transition: 0.4s;
-}
+} */
 
 .input-field.active {
   border-bottom-color: #151111;
