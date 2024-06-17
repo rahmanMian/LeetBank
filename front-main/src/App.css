@@ -23,14 +23,17 @@ html, #root{
     padding: 0;
     border: none;
     overflow-x: hidden;
-    overflow-y: none;
+    overflow-y: hidden;
     overscroll-behavior: none;
+    box-sizing: border-box; /* Include padding and border in width and height */
 }
 
 body{
   margin: 0;
   padding: 0;
   border: none;
+  width: 100%; /* Full width of the parent container */
+  height: 100vh; /* Full height of the viewport */
   background: linear-gradient(to bottom right, #a4d067 50%, #ff914c 50%);
   overflow-y: none;
 }
