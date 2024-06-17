@@ -5,6 +5,7 @@ html, #root{
     padding: 0;
     border: none;
     overflow-x: hidden;
+    overscroll-behavior: none;
 }
 
 /*Styles for container which stores all the blocks*/
