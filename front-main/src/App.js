@@ -1,4 +1,5 @@
 import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import {AddQuestion} from './add/addQuestion.jsx';
 import {LoginPage} from './login/loginPage.jsx';
 import React, { useState } from 'react';
@@ -18,15 +19,13 @@ function App() {
 
   return (
     <>
-    <div className="App">
-      <header className="App-header">
-      <button onClick={toggleDarkMode}>
-          {darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
-        </button>
-      </header>
-      </div>
-      <AddQuestion />
-      {/* <LoginPage /> */}
+   
+   <Router>
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/login-to-app" element={<AddQuestion />} />
+      </Routes>
+    </Router>
     </>
   );
 }

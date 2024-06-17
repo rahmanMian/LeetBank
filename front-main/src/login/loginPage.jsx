@@ -5,6 +5,7 @@ import image2 from '../img/image2.png';
 import image3 from '../img/image3.png'
 import {CustomAlert} from './customAlert';
 import './loginPage.css'; // Adjust the path as per your folder structure
+import { useNavigate } from 'react-router-dom';
 
 export const LoginPage = () => {
   const [isSignUpMode, setSignUpMode] = useState(false);
@@ -13,6 +14,7 @@ export const LoginPage = () => {
   const [password1, setPassword1] = useState("");
   const [password2, setPassword2] = useState("");
   const [showAlert, setShowAlert] = useState(false);
+  const navigate = useNavigate();
 
   
   const handleShowAlert = () => {
@@ -78,6 +80,12 @@ export const LoginPage = () => {
       }
     }
 
+    const handleSignIn = () =>{
+      navigate("/login-to-app");
+      
+    }
+
+
   return (
     <main className={isSignUpMode ? "sign-up-mode" : ""}>
       <div className="box">
@@ -124,7 +132,7 @@ export const LoginPage = () => {
                   />
                 </div>
 
-                <input type="submit" value="Sign In" className="sign-btn" />
+                <input type="submit" value="Sign In" className="sign-btn" onClick={handleSignIn} />
 
                 <p className="text">
                   Forgotten your password or your login details?
