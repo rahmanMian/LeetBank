@@ -24,12 +24,12 @@ export function ShuffleOutput({ questionArray , setIndex, index}) {
     return (
         <>
            
-            {/*if questions then add shuffle button*/}
+            {/* if questions then add shuffle button
             <div id="shuffleContainer">
             <ShuffleBlock questionArray={questionArray} index={index} />
 
             {questionArray.length > 0 && <button id="shuffleButton" onClick={handleShuffle}>Get A Question</button>}
-            </div>
+            </div> */}
         </>
     );
 }

@@ -10,4 +10,5 @@
     scrollbar-gutter:stable;
     position: absolute;
     top: 15%;
+    z-index: 100;
 }

@@ -30,6 +30,7 @@ html, #root{
     overscroll-behavior: none;
     scroll-behavior: smooth; /* Smooth scrolling */
     box-sizing: border-box; /* Include padding and border in width and height */
+    font-family: "Poppins", sans-serif;
 }
 
 

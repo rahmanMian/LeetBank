@@ -21,6 +21,7 @@ export function SearchBar({setResults, input, setInput}) {
          if(value === ""){
             setResults([]);
          }
+         
             try {
                 const response = await Axios.post("http://localhost:5001/graphql", { searchKeywords: value });
                 const questionArray = response.data.data.problemsetQuestionList.questions;
