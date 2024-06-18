@@ -9,6 +9,7 @@ export const SearchBlocks = ({results, addQuestion,setInput}) => {
        {results.map((result, id) => {
         return <SearchBlock result ={result} key={id} addQuestion={addQuestion} setInput={setInput} />
        })}
+
     </div>
   );
 };

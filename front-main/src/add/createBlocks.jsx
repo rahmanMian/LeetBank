@@ -17,7 +17,7 @@ export function CreateBlocks({ questionArray = [], setQuestion, setIndex, addCom
             {questionArray.length > 0 && questionArray.map((question) => (
                 <Block key ={question.id}  question={question} setQuestion = {setQuestion} setIndex={setIndex} addComment={addComment}/>
             ))}
-           
+         
         </div>
     );
 }

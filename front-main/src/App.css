@@ -15,7 +15,10 @@
 }
 
 
+
+
 /*both are stored seperately and need to have commas to cover app*/
+
 
 
 html, #root{
@@ -28,6 +31,8 @@ html, #root{
     box-sizing: border-box; /* Include padding and border in width and height */
 }
 
+
+
 body{
   margin: 0;
   padding: 0;
@@ -37,6 +42,24 @@ body{
   background: linear-gradient(to bottom right, #a4d067 50%, #ff914c 50%);
   overflow-y: none;
 }
+
+.history-block{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -40%); /* Corrected translate */
+  width: 100%;
+  max-width: 1020px;
+  height: 620px;
+  background-color: #fff;
+  border-radius: 3.3rem;
+  box-shadow: 0 60px 40px -30px rgba(0, 0, 0, 0.27);
+  overflow: auto; /* Allow scrolling only when needed */
+  overflow-x: hidden;
+  scrollbar-width: none; /* Firefox */
+ -ms-overflow-style: none;  /* IE and Edge */
+}
+
 
 /*Styles for container which stores all the blocks*/
 .blockContainer {
@@ -53,7 +76,7 @@ body{
 /*Indivudal blocks for each question */
 .block {
   margin-top: 20px;
-  width: 800px;
+  width: 650px;
   height: auto;
   background-color: var(--block-background-color); 
   border-top-left-radius: 10px;
@@ -102,7 +125,7 @@ body{
 
 /* Core styles/functionality for the tab opening and closing */
 .tab{
-    width: 800px;
+    width: 650px;
 }
 .tab input {
   position: absolute;
@@ -181,7 +204,7 @@ body{
 /*text area that holds comments */
 
 .questionComment {
-  width: 800px;
+  width: 650px;
   height: 100px; /* Set a specific height for better control */
   font-family: 'Courier New', Courier, monospace;
   font-size: 1rem;
@@ -196,6 +219,8 @@ body{
   padding: 10px; /* Add padding for better text input */
   max-height: 700px;
   overflow-y: auto;
+
+
 }
 textarea:focus {
   outline: none;
@@ -255,3 +280,4 @@ button:active {
 .question-link:hover{
   text-decoration: underline;
 }
+

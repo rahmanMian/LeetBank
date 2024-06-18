@@ -17,8 +17,10 @@ export function SearchBar({setResults, input, setInput}) {
     const handleChange = async (value) => {
         setInput(value);
         
-        // Check if the input length is at least 3 characters
-       
+         //check for complete removal
+         if(value === ""){
+            setResults([]);
+         }
             try {
                 const response = await Axios.post("http://localhost:5001/graphql", { searchKeywords: value });
                 const questionArray = response.data.data.problemsetQuestionList.questions;
@@ -33,7 +35,6 @@ export function SearchBar({setResults, input, setInput}) {
                 });
         
                 setResults(results);
-                console.log(results);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
