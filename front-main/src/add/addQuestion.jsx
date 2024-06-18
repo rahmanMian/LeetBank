@@ -5,6 +5,7 @@ import { CreateBlocks } from "./createBlocks";
 import { ShuffleOutput } from "../shuffle/shuffleOutput";
 import { SearchBar } from "./searchBar";
 import { SearchBlocks} from "./searchBlocks";
+import { QuestionSearchBar } from "./questionSearchBar";
 
 
 /**
@@ -104,7 +105,7 @@ export function AddQuestion() {
             <div className="history-block">
             {/*Renders the shuffle block usiing an index generated*/}
             <ShuffleOutput questionArray={questions} setIndex={setIndex} index ={index}/>
-            
+            <QuestionSearchBar />
             {/*Renders the blocks using and the comments*/}
             <CreateBlocks questionArray={questions} setQuestion={setQuestion} setIndex={setIndex} addComment={addComment}/>
             </div>
