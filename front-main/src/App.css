@@ -1,7 +1,7 @@
 :root {
   --background-color: #ffffff;
   --text-color: #000000;
-  --block-background-color: #ffebcd;
+  --block-background-color: #F5F5F5;
   --button-background-color: rgb(210, 195, 170);
   --button-hover-background-color: rgb(209, 165, 100);
 }
@@ -73,10 +73,11 @@ body{
   box-sizing: border-box;
   padding: 20px;
   border-radius: 10px;
+  margin-top: 50px;
 }
 
 /*Indivudal blocks for each question */
-.block {
+.block{
   margin-top: 20px;
   width: 650px;
   height: auto;
@@ -214,7 +215,7 @@ body{
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   border: thin #000000;
-  background: rgba(255, 235, 205, 0.9); /* Semi-transparent background */
+  background: #E8E8E8; /* Semi-transparent background */
   resize: none;
   position: relative; /* Position relative for overlay within accordion */
   z-index: 100; /* Higher z-index to overlay */
@@ -275,7 +276,7 @@ button:active {
 
 /*question anchor styling*/
 .question-link{
-  color: black;
+  color: royalblue;
   text-decoration: none;
 }
 
