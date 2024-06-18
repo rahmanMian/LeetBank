@@ -28,6 +28,7 @@ html, #root{
     overflow-x: hidden;
     overflow-y: hidden;
     overscroll-behavior: none;
+    scroll-behavior: smooth; /* Smooth scrolling */
     box-sizing: border-box; /* Include padding and border in width and height */
 }
 
@@ -54,7 +55,7 @@ body{
   background-color: #fff;
   border-radius: 3.3rem;
   box-shadow: 0 60px 40px -30px rgba(0, 0, 0, 0.27);
-  overflow: auto; /* Allow scrolling only when needed */
+  overflow-y: scroll; /* Allow scrolling only when needed */
   overflow-x: hidden;
   scrollbar-width: none; /* Firefox */
  -ms-overflow-style: none;  /* IE and Edge */
@@ -281,3 +282,7 @@ button:active {
   text-decoration: underline;
 }
 
+input[type="checkbox"]{
+  width: 200px;
+  height: auto;
+}
