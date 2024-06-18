@@ -8,8 +8,7 @@
     position: absolute;
     display: flex;
     align-items: center;
-    margin-left: 160px;
-    margin-top: 40px;
+    transform: translate(56%, 80%);
 }
 
 .search-input-wrapper input{
@@ -22,6 +21,11 @@
     min-width: 250px;
 }
 
+@media (max-width: 600px) {
+    .search-input-wrapper{
+    transform: translate(35%, 80%);
+    }
+}
 input:focus{
     outline: none;
 }

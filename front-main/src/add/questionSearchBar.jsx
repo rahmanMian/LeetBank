@@ -28,7 +28,7 @@ export function QuestionSearchBar({searchInput, setSearchInput}) {
         <>
            <div className="search-input-wrapper">
             <FaSearch id="search-icon" />
-            <input placeholder="Search for Questions.." id="searchInput" value={searchInput} onChange={(e) => handleChange(e.target.value)} />
+            <input placeholder="Search Your Questions.." id="searchInput" value={searchInput} onChange={(e) => handleChange(e.target.value)} />
            </div>
         </>
     );

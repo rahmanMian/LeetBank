@@ -61,37 +61,36 @@ body{
 }
 
 .inner-box{
+  background: transparent;
   padding: 0;
   border: 0;
   margin: 0;
   overflow-y: auto; /* Allow scrolling only when needed */
   overflow-x: hidden;
-  width: auto;
-  margin-top: 20px;
+  margin-top: 23px;
+  max-width: 680px;
   max-height: 500px;
-  scrollbar-width: none;
+  overflow-y: auto;
+  scrollbar-width:thin;
 }
+
+
+
 
 /*Styles for container which stores all the blocks*/
 .blockContainer {
   display: flex;
   width: 100%;
   height: auto;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
   box-sizing: border-box;
   padding: 0;
-  margin: 0;
-
-
 }
 
 /*Indivudal blocks for each question */
 
 
 .block{
-  margin-top: 20px;
   width: 650px;
   height: auto;
   background-color: var(--block-background-color); 
@@ -101,6 +100,28 @@ body{
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+@media (max-width: 600px) {
+  .blockContainer{
+    width: 80%;
+  }
+
+  
+  .inner-box{
+    display: flex;
+    justify-content: center;
+    margin-top: 70px;
+  }
+
+  .block, .tab__label,.questionComment,.tab__content {
+    /* Use a percentage for better responsiveness */
+    max-width: 400px; /* Ensure it doesn’t exceed 400px */
+    
+  }
+
+  
+  
 }
 
 
@@ -142,6 +163,7 @@ body{
 /* Core styles/functionality for the tab opening and closing */
 .tab{
     width: 650px;
+    margin-bottom: 20px;
 }
 .tab input {
   position: absolute;
@@ -236,7 +258,6 @@ body{
   max-height: 700px;
   overflow-y: auto;
 
-
 }
 textarea:focus {
   outline: none;
@@ -247,9 +268,7 @@ textarea:focus {
   flex-direction: column;
   padding: 0;
 }
-.blockContainer:first-child{
-  margin-top: 0px;
-}
+
 
 
 

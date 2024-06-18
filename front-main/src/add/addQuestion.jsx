@@ -108,11 +108,13 @@ export function AddQuestion() {
 
 
             <div className="history-block">
+            
             {/*Renders the shuffle block usiing an index generated*/}
             <ShuffleOutput questionArray={questions} setIndex={setIndex} index ={index}/>
 
             <QuestionSearchBar searchInput = {searchInput} setSearchInput = {setSearchInput}/>
             <div className="inner-box">
+        
             {/*Renders the blocks using and the comments*/}
             <CreateBlocks questionArray={questions} setQuestion={setQuestion} setIndex={setIndex} addComment={addComment}/>
             </div>
