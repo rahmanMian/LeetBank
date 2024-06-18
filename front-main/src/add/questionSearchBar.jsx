@@ -1,6 +1,6 @@
 import React from "react";
 import { FaSearch} from "react-icons/fa";
-import "./searchBar.css";
+import "./questionSearchBar.css";
 import Axios from "axios";
 
 /**
@@ -49,9 +49,9 @@ export function QuestionSearchBar({setResults, input, setInput}) {
 
     return (
         <>
-           <div className="input-wrapper">
+           <div className="search-input-wrapper">
             <FaSearch id="search-icon" />
-            <input placeholder="Search for Questions.." id="questionInput" value={input} onChange={(e) => handleChange(e.target.value)} />
+            <input placeholder="Search for Questions.." id="searchInput" value={input} onChange={(e) => handleChange(e.target.value)} />
            </div>
         </>
     );

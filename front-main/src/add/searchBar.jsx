@@ -51,7 +51,7 @@ export function SearchBar({setResults, input, setInput}) {
         <>
            <div className="input-wrapper">
             <FaSearch id="search-icon" />
-            <input placeholder="Add Question.." id="questionInput" value={input} onChange={(e) => handleChange(e.target.value)} />
+            <input placeholder="Add a Question.." id="questionInput" value={input} onChange={(e) => handleChange(e.target.value)} />
            </div>
         </>
     );
