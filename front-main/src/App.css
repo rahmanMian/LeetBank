@@ -286,3 +286,15 @@ input[type="checkbox"]{
   width: 200px;
   height: auto;
 }
+
+/*delete icon styling*/
+.delete-icon{
+  width: 20px;
+  height: auto;
+}
+
+/*delete icon styling*/
+.delete-icon:hover{
+  width: 25px;
+  height: auto;
+}

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap CSS is imported
 import '../App.css';
 import { DeleteQuestion } from '../delete/deleteQuestion';
+import { MdOutlineDeleteOutline } from "react-icons/md";
 
 /**
  * Renders a block representing a question with a delete button.
@@ -55,7 +56,7 @@ export function Block({ question, setQuestion, setIndex, addComment }) {
         <div className='block-tab'>
             <div className="block" id={`block-${question.id}`}>
                 <a className="question-link" href={`https://leetcode.com/problems/${question.titleSlug}`}  target="_blank" rel="noreferrer">{question.title}</a>
-                <button onClick={handleDeleteQuestion}>Delete</button>
+                < MdOutlineDeleteOutline className="delete-icon" onClick={handleDeleteQuestion} /> 
             </div>
 
             <div className="tab">
