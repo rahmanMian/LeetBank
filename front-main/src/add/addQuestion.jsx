@@ -32,6 +32,11 @@ export function AddQuestion() {
     //to use for question input
     const [input, setInput] = useState("");
 
+    
+    //to use for question search input
+    const [searchInput, setSearchInput] = useState("");
+
+
     //locally stores questions added my users 
     useEffect(() => {
         localStorage.setItem("QUESTIONS", JSON.stringify(questions));
@@ -105,11 +110,13 @@ export function AddQuestion() {
             <div className="history-block">
             {/*Renders the shuffle block usiing an index generated*/}
             <ShuffleOutput questionArray={questions} setIndex={setIndex} index ={index}/>
-            <QuestionSearchBar />
+
+            <QuestionSearchBar searchInput = {searchInput} setSearchInput = {setSearchInput}/>
+            <div className="inner-box">
             {/*Renders the blocks using and the comments*/}
             <CreateBlocks questionArray={questions} setQuestion={setQuestion} setIndex={setIndex} addComment={addComment}/>
             </div>
-            
+            </div>
         </>
     );
 }
