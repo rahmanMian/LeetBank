@@ -84,10 +84,12 @@ body{
 .blockContainer {
   display: flex;
   width: 100%;
-  height: auto;
+  height: 400px;
+  overflow: auto;
   flex-direction: column;
   box-sizing: border-box;
   padding: 0;
+  z-index: 200;
 }
 
 /*Indivudal blocks for each question */
