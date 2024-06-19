@@ -118,7 +118,7 @@ export function AddQuestion() {
              
              <div className="searchAddedContainer">
             <QuestionSearchBar setSearchResults={setSearchResults}  setSearchInput = {setSearchInput} questions={questions}/>
-            <AddedSearchBlocks searchResults={searchResults} setSearchInput={setSearchInput}/>
+            <AddedSearchBlocks setSearchResults={setSearchResults}  searchResults={searchResults} setSearchInput={setSearchInput}/>
             </div>
             <div className="inner-box-app">
             {/*Renders the blocks using and the comments*/}

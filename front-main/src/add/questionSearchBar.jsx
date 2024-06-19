@@ -16,13 +16,12 @@ export function QuestionSearchBar({setSearchResults, searchInput, setSearchInput
     
     const handleChange = async (value) => {
        setSearchInput(value);
+
        if(value === ""){
         setSearchResults([]);
-     }
+     }else{
 
         try {
-           
-    
             // Filter questions based on lowercase versions of value and question title
                 const results = questions.filter((question) => {
                 const lowercaseTitle = question.title.toLowerCase(); // Convert title to lowercase
@@ -34,8 +33,7 @@ export function QuestionSearchBar({setSearchResults, searchInput, setSearchInput
         } catch (error) {
             console.error('Error fetching data:', error);
         }
-
-
+    }
 
     };
     
