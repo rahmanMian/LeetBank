@@ -16,7 +16,6 @@ export function QuestionSearchBar({setSearchResults, searchInput, setSearchInput
     
     const handleChange = async (value) => {
        setSearchInput(value);
-
        if(value === ""){
         setSearchResults([]);
      }else{
