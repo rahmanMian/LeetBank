@@ -58,9 +58,12 @@ body{
   box-shadow: 0 60px 40px -30px rgba(0, 0, 0, 0.27);
   overflow-y: none; /* Allow scrolling only when needed */
   overflow-x: none;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
-.inner-box{
+.inner-box-app{
   background: transparent;
   padding: 0;
   border: 0;
@@ -103,15 +106,15 @@ body{
 }
 
 @media (max-width: 600px) {
-  .blockContainer{
-    width: 80%;
-  }
+  
 
   
-  .inner-box{
+  .inner-box-app{
     display: flex;
-    justify-content: center;
+    align-items: center;
     margin-top: 70px;
+    width: 100%;
+    margin-left: 50px;
   }
 
   .block, .tab__label,.questionComment,.tab__content {

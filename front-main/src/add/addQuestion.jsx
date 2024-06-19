@@ -6,6 +6,7 @@ import { ShuffleOutput } from "../shuffle/shuffleOutput";
 import { SearchBar } from "./searchBar";
 import { SearchBlocks} from "./searchBlocks";
 import { QuestionSearchBar } from "./questionSearchBar";
+import { AddedSearchBlocks } from "./addedSearchBlocks";
 
 
 /**
@@ -28,6 +29,9 @@ export function AddQuestion() {
 
     //array for list of preffered vals
     const [results , setResults] = useState([]);
+
+    //array for list of vals that you have added
+     const [searchResults , setSearchResults] = useState([]);
 
     //to use for question input
     const [input, setInput] = useState("");
@@ -111,10 +115,12 @@ export function AddQuestion() {
             
             {/*Renders the shuffle block usiing an index generated*/}
             <ShuffleOutput questionArray={questions} setIndex={setIndex} index ={index}/>
-
-            <QuestionSearchBar searchInput = {searchInput} setSearchInput = {setSearchInput}/>
-            <div className="inner-box">
-        
+             
+             <div className="searchAddedContainer">
+            <QuestionSearchBar setSearchResults={setSearchResults}  setSearchInput = {setSearchInput} questions={questions}/>
+            <AddedSearchBlocks searchResults={searchResults} setSearchInput={setSearchInput}/>
+            </div>
+            <div className="inner-box-app">
             {/*Renders the blocks using and the comments*/}
             <CreateBlocks questionArray={questions} setQuestion={setQuestion} setIndex={setIndex} addComment={addComment}/>
             </div>
