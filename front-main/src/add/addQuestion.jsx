@@ -7,6 +7,9 @@ import { SearchBar } from "./searchBar";
 import { SearchBlocks} from "./searchBlocks";
 import { QuestionSearchBar } from "./questionSearchBar";
 import { AddedSearchBlocks } from "./addedSearchBlocks";
+import logo from '../img/logo.png'; // Adjust the path based on your directory structure
+
+
 
 
 /**
@@ -104,7 +107,7 @@ export function AddQuestion() {
 
     return (
         <>
-          
+             
              <div className="searchContainer">
              <SearchBar setResults={setResults} setInput = {setInput}/>
              <SearchBlocks results = {results} addQuestion={addQuestion} setInput={setInput}/>
@@ -118,7 +121,7 @@ export function AddQuestion() {
              
              <div className="searchAddedContainer">
             <QuestionSearchBar setSearchResults={setSearchResults}  setSearchInput = {setSearchInput} questions={questions}/>
-            <AddedSearchBlocks setSearchResults={setSearchResults}  searchResults={searchResults} setSearchInput={setSearchInput}/>
+            <AddedSearchBlocks setSearchResults={setSearchResults}  searchResults={searchResults} setSearchInput={setSearchInput} questions={questions}/>
             </div>
             <div className="inner-box-app">
             {/*Renders the blocks using and the comments*/}

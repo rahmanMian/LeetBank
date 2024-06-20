@@ -45,6 +45,13 @@ body{
   overflow-y: none;
 }
 
+
+#app-logo{
+  width: 120px;
+  height: auto;
+  position: absolute;
+  -webkit-filter: drop-shadow(4px 5px rgb(101, 155, 101));
+}
 .history-block{
   position: absolute;
   top: 50%;
@@ -86,14 +93,14 @@ body{
   display: flex;
   position: fixed;
   width: 700px;
-  height: 530px;
+  height: 520px;
   overflow-x: none;
   overflow-y: auto;
   flex-direction: column;
   box-sizing: border-box;
   padding: 0;
   z-index: 2;
-  transform: translate(-47%,0%);
+  transform: translate(-47%,4%);
   scrollbar-width: thin;
 }
 

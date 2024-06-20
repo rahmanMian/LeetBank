@@ -1,14 +1,22 @@
 import React from 'react'
 import "./searchBlock.css";
 
-export const AddedSearchBlock = ({setSearchResults, result, setSearchInput}) => {
+export const AddedSearchBlock = ({setSearchResults, result, setSearchInput, questions}) => {
   
 
 
   const handleClick = () => {
     
+    const questionChosen = questions.find((question) => question.title === result.title);
+    const blockElement = document.getElementById(`cb-${questionChosen.id}`);
+    blockElement.scrollIntoView({behavior: "smooth"});
+
+
     setSearchInput('');  // Clear the input
     setSearchResults([]);
+
+
+
 
   };
 
