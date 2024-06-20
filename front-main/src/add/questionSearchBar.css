@@ -11,7 +11,7 @@
     transform: translate(-57%,55%);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 658px) {
     .search-input-wrapper{
 transform: translate(0%,60%);
     }

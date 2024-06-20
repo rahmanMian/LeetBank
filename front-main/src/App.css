@@ -61,6 +61,7 @@ body{
   display: flex;
   align-items: center;
   flex-direction: column;
+  min-width: 600px;
 }
 
 .inner-box-app{
@@ -83,13 +84,17 @@ body{
 /*Styles for container which stores all the blocks*/
 .blockContainer {
   display: flex;
-  width: 100%;
-  height: 400px;
-  overflow: auto;
+  position: fixed;
+  width: 700px;
+  height: 530px;
+  overflow-x: none;
+  overflow-y: auto;
   flex-direction: column;
   box-sizing: border-box;
   padding: 0;
-  z-index: 200;
+  z-index: 2;
+  transform: translate(-47%,0%);
+  scrollbar-width: thin;
 }
 
 /*Indivudal blocks for each question */
@@ -107,9 +112,12 @@ body{
   align-items: center;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 658px) {
   
-
+   .blockContainer{
+    transform: translate(16%,41%);
+    overflow-x: hidden;
+   }
   
   .inner-box-app{
     display: flex;
@@ -121,7 +129,7 @@ body{
 
   .block, .tab__label,.questionComment,.tab__content {
     /* Use a percentage for better responsiveness */
-    max-width: 400px; /* Ensure it doesn’t exceed 400px */
+    max-width: 320px; /* Ensure it doesn’t exceed 400px */
     
   }
 
@@ -321,6 +329,7 @@ button:active {
 .question-link{
   color: royalblue;
   text-decoration: none;
+  width: 80%;
 }
 
 .question-link:hover{
