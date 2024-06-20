@@ -8,7 +8,7 @@ export const AddedSearchBlock = ({setSearchResults, result, setSearchInput, ques
   const handleClick = () => {
     
     const questionChosen = questions.find((question) => question.title === result.title);
-    const blockElement = document.getElementById(`cb-${questionChosen.id}`);
+    const blockElement = document.getElementById(`block-${questionChosen.id}`);
     blockElement.scrollIntoView({behavior: "smooth"});
 
 
