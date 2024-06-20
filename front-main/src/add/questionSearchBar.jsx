@@ -21,7 +21,7 @@ export function QuestionSearchBar({setSearchResults, searchInput, setSearchInput
       const handleBlur = () => {
         setTimeout(() =>{
           setSearchBarAddedClicked(false);
-        },100);
+        },300);
      }
     
     const handleChange = async (value) => {
