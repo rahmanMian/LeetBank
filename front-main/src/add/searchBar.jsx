@@ -11,9 +11,17 @@ import Axios from "axios";
  * @param {Object[]} questionArray - Array of question objects.
  * @returns {JSX.Element} blockContainer - Container containing div blocks.
  */
-export function SearchBar({setResults, input, setInput}) {
+export function SearchBar({setResults, input, setInput, setSearchBarClicked}) {
 
     
+    const handleClick = () => {
+      setSearchBarClicked(true);
+    }
+
+    const handleBlur = () => {
+        setSearchBarClicked(false);
+      }
+
     const handleChange = async (value) => {
         setInput(value);
         
@@ -51,7 +59,7 @@ export function SearchBar({setResults, input, setInput}) {
         <>
            <div className="input-wrapper">
             <FaSearch id="search-icon" />
-            <input placeholder="Add a Question.." id="questionInput" value={input} onChange={(e) => handleChange(e.target.value)} />
+            <input placeholder="Add a Question.." id="questionInput" value={input} onClick={handleClick} onBlur = {handleBlur} onChange={(e) => handleChange(e.target.value)} />
            </div>
         </>
     );

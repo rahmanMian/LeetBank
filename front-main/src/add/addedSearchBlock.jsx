@@ -14,10 +14,6 @@ export const AddedSearchBlock = ({setSearchResults, result, setSearchInput, ques
 
     setSearchInput('');  // Clear the input
     setSearchResults([]);
-
-
-
-
   };
 
   return (

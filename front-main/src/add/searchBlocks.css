@@ -28,3 +28,17 @@
     z-index: 100;
    transform: translate(-57%,-10%);
 }
+
+
+
+@media (max-width: 658px) {
+  
+    .search-results-list{
+       transform: translate(0%,-10%);
+    }
+    
+    
+  
+   
+   
+ }

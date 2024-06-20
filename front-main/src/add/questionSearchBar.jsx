@@ -11,8 +11,16 @@ import "./questionSearchBar.css";
  * @param {Object[]} questionArray - Array of question objects.
  * @returns {JSX.Element} blockContainer - Container containing div blocks.
  */
-export function QuestionSearchBar({setSearchResults, searchInput, setSearchInput, questions}) {
+export function QuestionSearchBar({setSearchResults, searchInput, setSearchInput, questions, setSearchBarAddedClicked}) {
 
+
+    const handleClick = () => {
+        setSearchBarAddedClicked(true);
+      }
+  
+      const handleBlur = () => {
+          setSearchBarAddedClicked(false);
+     }
     
     const handleChange = async (value) => {
        setSearchInput(value);
@@ -46,7 +54,7 @@ export function QuestionSearchBar({setSearchResults, searchInput, setSearchInput
         <>
            <div className="search-input-wrapper">
             <FaSearch id="search-icon" />
-            <input placeholder="Search Your Questions.." id="searchInput" value={searchInput} onChange={(e) => handleChange(e.target.value)} />
+            <input placeholder="Search Your Questions.." id="searchInput" value={searchInput} onClick={handleClick}  onBlur={handleBlur} onChange={(e) => handleChange(e.target.value)} />
            </div>
         </>
     );

@@ -43,6 +43,10 @@ export function AddQuestion() {
     //to use for question search input
     const [searchInput, setSearchInput] = useState("");
 
+    const [searchBarClicked, setSearchBarClicked] = useState(false);
+
+    const [searchBarAddedClicked, setSearchBarAddedClicked] = useState(false);
+
 
     //locally stores questions added my users 
     useEffect(() => {
@@ -109,8 +113,8 @@ export function AddQuestion() {
         <>
              
              <div className="searchContainer">
-             <SearchBar setResults={setResults} setInput = {setInput}/>
-             <SearchBlocks results = {results} addQuestion={addQuestion} setInput={setInput}/>
+             <SearchBar setResults={setResults} setInput = {setInput} setSearchBarClicked ={setSearchBarClicked}/>
+             {searchBarClicked && <SearchBlocks results = {results} addQuestion={addQuestion} setInput={setInput}/>}
              </div>
 
 
@@ -120,8 +124,8 @@ export function AddQuestion() {
             <ShuffleOutput questionArray={questions} setIndex={setIndex} index ={index}/>
              
              <div className="searchAddedContainer">
-            <QuestionSearchBar setSearchResults={setSearchResults}  setSearchInput = {setSearchInput} questions={questions}/>
-            <AddedSearchBlocks setSearchResults={setSearchResults}  searchResults={searchResults} setSearchInput={setSearchInput} questions={questions}/>
+            <QuestionSearchBar setSearchResults={setSearchResults}  setSearchInput = {setSearchInput} questions={questions} setSearchBarAddedClicked = {setSearchBarAddedClicked} />
+            {searchBarAddedClicked && <AddedSearchBlocks setSearchResults={setSearchResults}  searchResults={searchResults} setSearchInput={setSearchInput} questions={questions}/>}
             </div>
             <div className="inner-box-app">
             {/*Renders the blocks using and the comments*/}
