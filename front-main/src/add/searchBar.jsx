@@ -15,11 +15,15 @@ export function SearchBar({setResults, input, setInput, setSearchBarClicked}) {
 
     
     const handleClick = () => {
+    
       setSearchBarClicked(true);
     }
 
     const handleBlur = () => {
+       // Example: Reset searchBarClicked after 1 second
+    setTimeout(() => {
         setSearchBarClicked(false);
+      }, 100); // Adjust delay as needed
       }
 
     const handleChange = async (value) => {
