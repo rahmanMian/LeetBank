@@ -217,8 +217,9 @@ export const LoginPage = () => {
               </div>
             </form>
           </div>
-
-          <div className="carousel">
+           
+          <div className='flip-container'>
+          <div className="carousel front">
             <div className="images-wrapper">
               <img
                 src={image1}
@@ -267,6 +268,11 @@ export const LoginPage = () => {
                 ></span>
               </div>
             </div>
+          </div>
+
+          <div className="carousel back" style={{ display: "none" }}>
+            <h2>Forgot Password</h2>
+          </div>
           </div>
         </div>
       </div>
