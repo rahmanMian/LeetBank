@@ -218,7 +218,7 @@ export const LoginPage = () => {
           </div>
            
           <div className='flip-container'>
-          <div className="carousel front" style={{ display: "none" }}>
+          <div className="carousel front"  style={{ display: "none" }}>
             <div className="images-wrapper">
               <img
                 src={image1}

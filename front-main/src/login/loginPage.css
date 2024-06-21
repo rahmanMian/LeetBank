@@ -139,16 +139,7 @@ form.sign-up-form {
   transition: 0.4s;
 }
 
-/* label {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 0.95rem;
-  color: #bbb;
-  pointer-events: none;
-  transition: 0.4s;
-} */
+
 
 .input-field.active {
   border-bottom-color: #151111;
@@ -348,7 +339,7 @@ main.sign-up-mode .carousel {
     transform: translateX(0%);
   }
 
-  .carousel {
+  .carousel, .back{
     position: revert;
     height: auto;
     width: 100%;
@@ -356,12 +347,24 @@ main.sign-up-mode .carousel {
     display: flex;
   }
 
+
   .images-wrapper {
     display: none;
   }
 
   .text-slider {
     width: 100%;
+  }
+
+  .back{
+    display: flex;
+    flex-direction: column;
+  }
+  .heading{
+    margin: 0;
+  }
+  .back > .heading > h2{
+    font-size: 20px;
   }
 }
 
@@ -378,7 +381,7 @@ main.sign-up-mode .carousel {
     padding: 1rem;
   }
 
-  .carousel {
+  .carousel, .back {
     padding: 1.5rem 1rem;
     border-radius: 1.6rem;
   }
@@ -394,7 +397,22 @@ main.sign-up-mode .carousel {
   form {
     padding: 1rem 2rem 1.5rem;
   }
+  
+  .back{
+    display: flex;
+    flex-direction: column;
+  }
+  .heading{
+    margin: 0;
+  }
+  .back > .heading > h2{
+    font-size: 20px;
+  }
+
 }
+
+
+
 
 
 .forgot-btn {
@@ -413,4 +431,14 @@ main.sign-up-mode .carousel {
 
 .forgot-btn:hover {
   background-color: #8371fd;
+}
+
+
+.forgotten-email{
+  width: 70%;
+}
+
+.back{
+  display: flex;
+  flex-direction: column;
 }
