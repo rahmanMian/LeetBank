@@ -168,7 +168,6 @@ export const LoginPage = () => {
                     onBlur={(e) => handleBlur(3, e.target.value)}
                     required
                   />
-
                 </div>
 
                 <div className={`input-wrap ${inputFocus[4] ? "active" : ""}`}>
@@ -219,7 +218,7 @@ export const LoginPage = () => {
           </div>
            
           <div className='flip-container'>
-          <div className="carousel front">
+          <div className="carousel front" style={{ display: "none" }}>
             <div className="images-wrapper">
               <img
                 src={image1}
@@ -270,9 +269,27 @@ export const LoginPage = () => {
             </div>
           </div>
 
-          <div className="carousel back" style={{ display: "none" }}>
-            <h2>Forgot Password</h2>
+          <div className="carousel back">
+              <div className="heading">
+                <h2>Forgotten Your Password?</h2>
+                <h6>Enter your email for a reset link</h6>
+              </div>
+              <div className={`input-wrap forgotten-email`}>
+                  <input
+                    type="text"
+                    minLength="4"
+                    placeholder="Email"
+                    className="input-field"
+                    autoComplete="off"
+                    onFocus={() => handleFocus(3)}
+                    onBlur={(e) => handleBlur(3, e.target.value)}
+                    required
+                  />
+                </div>
+
+                <input type="submit" value="Send Link" className="forgot-btn" onClick={()=>{}} />
           </div>
+
           </div>
         </div>
       </div>
