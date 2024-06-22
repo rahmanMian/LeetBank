@@ -289,7 +289,6 @@ export const LoginPage = () => {
 
                 <input type="submit" value="Send Link" className="forgot-btn" onClick={()=>{}} />
           </div>
-
           </div>
         </div>
       </div>

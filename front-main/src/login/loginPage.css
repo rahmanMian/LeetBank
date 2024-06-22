@@ -296,6 +296,47 @@ main.sign-up-mode .carousel {
   border-radius: 1rem;
 }
 
+
+
+
+
+.forgot-btn {
+  display: inline-block;
+  width: 100%;
+  height: 43px;
+  background-color: #151111;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.8rem;
+  font-size: 0.8rem;
+  margin-bottom: 2rem;
+  transition: 0.3s;
+}
+
+.forgot-btn:hover {
+  background-color: #8371fd;
+}
+
+
+.forgotten-email{
+  width: 70%;
+  margin-top: 53px;
+}
+.back{
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+}
+
+.back > .heading{
+  margin-top: 113px;
+}
+
+.back > .forgot-btn{
+  margin-top: 69px;
+}
+
 @media (max-width: 850px) {
   .box {
     height: auto;
@@ -359,6 +400,7 @@ main.sign-up-mode .carousel {
   .back{
     display: flex;
     flex-direction: column;
+    padding: 13px;
   }
   .heading{
     margin: 0;
@@ -366,6 +408,18 @@ main.sign-up-mode .carousel {
   .back > .heading > h2{
     font-size: 20px;
   }
+
+  .back > .forgot-btn{
+    margin-top: 0px;
+  }
+
+  .back > .heading{
+    margin-top: 0px;
+  }
+
+  
+ 
+ 
 }
 
 @media (max-width: 530px) {
@@ -409,36 +463,21 @@ main.sign-up-mode .carousel {
     font-size: 20px;
   }
 
+  
+  
+  .back > .forgot-btn{
+    margin-top: 0px;
+  }
+
+  .back > .heading{
+    margin-top: 0px;
+  }
+  
+
+
 }
 
 
 
 
 
-.forgot-btn {
-  display: inline-block;
-  width: 100%;
-  height: 43px;
-  background-color: #151111;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  border-radius: 0.8rem;
-  font-size: 0.8rem;
-  margin-bottom: 2rem;
-  transition: 0.3s;
-}
-
-.forgot-btn:hover {
-  background-color: #8371fd;
-}
-
-
-.forgotten-email{
-  width: 70%;
-}
-
-.back{
-  display: flex;
-  flex-direction: column;
-}
