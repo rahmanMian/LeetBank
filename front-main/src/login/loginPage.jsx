@@ -14,6 +14,8 @@ export const LoginPage = () => {
   const [password1, setPassword1] = useState("");
   const [password2, setPassword2] = useState("");
   const [showAlert, setShowAlert] = useState(false);
+  const [classNameFront, setClassNameFront] = useState("");
+  const [classNameBack, setClassNameBack] = useState("is-flipped");
   const navigate = useNavigate();
 
   
@@ -39,6 +41,7 @@ export const LoginPage = () => {
 
   const handleToggle = () => {
     setSignUpMode(!isSignUpMode);
+    handleFlipBack();
   };
 
   const moveSlider = (index) => {
@@ -83,6 +86,16 @@ export const LoginPage = () => {
     const handleSignIn = () =>{
       navigate("/login-to-app");
       
+    }
+
+    const handleFlipBack = () => {
+       setClassNameBack("is-flipped");
+       setClassNameFront("");
+    }
+
+    const handleFlipFront = () => {
+      setClassNameFront("is-flipped");
+      setClassNameBack("");
     }
 
 
@@ -136,7 +149,7 @@ export const LoginPage = () => {
 
                 <p className="text">
                   Forgotten your password or your login details?
-                  <a href="#">Get help</a> signing in
+                  <a onClick={handleFlipFront}>Get help</a> signing in
                 </p>
               </div>
             </form>
@@ -218,7 +231,7 @@ export const LoginPage = () => {
           </div>
            
           <div className='flip-container'>
-          <div className="carousel front"  style={{ display: "none" }}>
+          <div  className={`carousel front ${classNameFront}`}>
             <div className="images-wrapper">
               <img
                 src={image1}
@@ -269,7 +282,7 @@ export const LoginPage = () => {
             </div>
           </div>
 
-          <div className="carousel back">
+          <div  className={`carousel back ${classNameBack}`}>
               <div className="heading">
                 <h2>Forgotten Your Password?</h2>
                 <h6>Enter your email for a reset link</h6>

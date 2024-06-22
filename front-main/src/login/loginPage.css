@@ -45,6 +45,7 @@ main {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  transform-style: preserve-3d;
 }
 
 .forms-wrap {
@@ -213,6 +214,24 @@ main.sign-up-mode .carousel {
   padding-bottom: 2rem;
   overflow: hidden;
   transition: 0.8s ease-in-out;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden; /* For older Safari versions */
+  transform-style: preserve-3d;
+
+}
+
+.back{
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+
+  backface-visibility: hidden;
+}
+
+/*flipping animation */
+
+.is-flipped {
+  transform: rotateY(180deg);
 }
 
 .images-wrapper {
@@ -323,11 +342,8 @@ main.sign-up-mode .carousel {
   width: 70%;
   margin-top: 53px;
 }
-.back{
-  display: flex;
-  flex-direction: column;
-  padding: 30px;
-}
+
+
 
 .back > .heading{
   margin-top: 113px;
