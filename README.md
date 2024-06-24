@@ -50,14 +50,8 @@ To get started with this Create React App project, follow the steps below:
    ```bash
    npm run dev
    ```
-   This will run the app in development mode. Open [http://localhost:3000](http://localhost:3000) to view it in your browser. The page will reload if you make edits, and you will see any lint errors in the console.
+   This will run the app in development mode. Open [http://localhost:3000](http://localhost:3000) to view it in your browser. The page will reload if you make edits, and you will see any lint errors in the console. You will need your own API Key for firebase auth and firestore
 
-**Run Tests:**
-   To launch the test runner in the interactive watch mode, use:
-   ```bash
-   npm test
-   ```
-   Refer to the section about running tests for more information.
 
 
 For more information, refer to the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started) and the [React documentation](https://reactjs.org/).
