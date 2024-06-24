@@ -149,7 +149,7 @@ export const LoginPage = () => {
 
                 <p className="text">
                   Forgotten your password or your login details?
-                  <a id ="password-card-link" onClick={handleFlipFront}>Get help</a> signing in
+                  <a onClick={handleFlipFront} className='help-link'>Get help</a> signing in
                 </p>
               </div>
             </form>

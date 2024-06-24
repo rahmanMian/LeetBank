@@ -169,6 +169,18 @@ form.sign-up-form {
   background-color: #8371fd;
 }
 
+
+.text .help-link{
+  text-decoration: underline;
+   font-size: 0.8rem;
+}
+
+.text .help-link:hover{
+  text-decoration: underline;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
 .text {
   color: #bbb;
   font-size: 0.7rem;
@@ -177,11 +189,14 @@ form.sign-up-form {
 .text a {
   color: #bbb;
   transition: 0.3s;
+ 
 }
 
 .text a:hover {
   color: #8371fd;
+  
 }
+
 
 main.sign-up-mode form.sign-in-form {
   opacity: 0;
@@ -488,9 +503,6 @@ main.sign-up-mode .carousel {
   .back > .heading{
     margin-top: 0px;
   }
-  
-
-
 }
 
 
