@@ -6,6 +6,7 @@ import image3 from '../img/image3.png'
 import {CustomAlert} from './customAlert';
 import './loginPage.css'; // Adjust the path as per your folder structure
 import { useNavigate } from 'react-router-dom';
+import {registerUser} from '../server/Firebase/register.js';
 
 export const LoginPage = () => {
   const [isSignUpMode, setSignUpMode] = useState(false);
@@ -81,6 +82,10 @@ export const LoginPage = () => {
         event.preventDefault();
         handleShowAlert();
       }
+
+      registerUser(document.getElementById("signup-email").value, password2, event);
+
+      
     }
 
     const handleSignIn = () =>{
@@ -175,6 +180,7 @@ export const LoginPage = () => {
                     minLength="4"
                     placeholder="Email"
                     className="input-field"
+                    id="signup-email"
                     autoComplete="off"
                     onFocus={() => handleFocus(3)}
                     onBlur={(e) => handleBlur(3, e.target.value)}
@@ -185,7 +191,7 @@ export const LoginPage = () => {
                 <div className={`input-wrap ${inputFocus[4] ? "active" : ""}`}>
                   <input
                     type="password"
-                    minLength="4"
+                    minLength="6"
                     className="input-field"
                     placeholder="Password"
                     id="choosePassword"
