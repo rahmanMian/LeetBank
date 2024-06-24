@@ -148,8 +148,7 @@ export const LoginPage = () => {
                 <input type="submit" value="Sign In" className="sign-btn" onClick={handleSignIn} />
 
                 <p className="text">
-                  Forgotten your password or your login details?
-                  <a onClick={handleFlipFront} className='help-link'>Get help</a> signing in
+                  Forgotten your password?  <a onClick={handleFlipFront} className='help-link'>Get help</a> signing in
                 </p>
               </div>
             </form>

@@ -172,12 +172,11 @@ form.sign-up-form {
 
 .text .help-link{
   text-decoration: underline;
-   font-size: 0.8rem;
+   font-size: 0.7rem;
 }
 
 .text .help-link:hover{
   text-decoration: underline;
-  font-size: 0.82rem;
   cursor: pointer;
 }
 
