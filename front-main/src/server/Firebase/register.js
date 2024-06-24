@@ -1,11 +1,13 @@
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
 
 
 
 
+//you will need to add your own
 const firebaseConfig = {
-  apiKey: "AIzaSyBQD3yKFf_GEMI0U0Ub6UHmBNlZTYnLOrU",
+  apiKey: process.env.REACT_APP_AUTH_KEY,
   authDomain: "leetbank-auth.firebaseapp.com",
   projectId: "leetbank-auth",
   storageBucket: "leetbank-auth.appspot.com",

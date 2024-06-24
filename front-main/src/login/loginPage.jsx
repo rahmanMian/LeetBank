@@ -81,9 +81,9 @@ export const LoginPage = () => {
       if(password1 !== password2){
         event.preventDefault();
         handleShowAlert();
-      }
-
+      }else{
       registerUser(document.getElementById("signup-email").value, password2, event);
+      }
 
       
     }
