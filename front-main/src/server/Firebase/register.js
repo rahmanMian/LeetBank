@@ -43,11 +43,11 @@ const auth = getAuth(fireApp);
   
     document.getElementById("loginMessage").innerHTML = "Account Successfully Created";
     setTimeout(() => {
-      }, 1400);
+      }, 2000);
+      window.location.reload();
   })
   .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
+    window.alert("User Already Exists or Creation Error");
     // ..
   });
 
