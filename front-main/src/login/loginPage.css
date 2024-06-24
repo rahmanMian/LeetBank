@@ -123,7 +123,6 @@ form.sign-up-form {
 .input-wrap {
   position: relative;
   height: 37px;
-  margin-bottom: 2rem;
 }
 
 .input-field {
@@ -447,9 +446,13 @@ main.sign-up-mode .carousel {
     margin-top: 0px;
   }
 
-  
+  .is-flipped{
+    display: none;
+  }
  
- 
+  .forgotten-email{
+    margin-top: 0;
+  }
 }
 
 @media (max-width: 530px) {
@@ -502,9 +505,24 @@ main.sign-up-mode .carousel {
   .back > .heading{
     margin-top: 0px;
   }
+
+  .is-flipped{
+    display: none;
+  }
+
+  .forgotten-email{
+    margin-top: 0;
+  }
 }
 
+.form__input-error-message{
+margin-left: 5px;
+margin-bottom: 2rem;
+font-size: 0.7rem;
+color: red;
+}
 
-
-
+#loginMessage{
+margin-left: 5px;
+}
 

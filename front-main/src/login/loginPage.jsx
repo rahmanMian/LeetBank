@@ -136,6 +136,7 @@ export const LoginPage = () => {
                     required
                   />
                 </div>
+                <div  className="form__input-error-message"></div>
 
                 <div className={`input-wrap ${inputFocus[2] ? "active" : ""}`}>
                   <input
@@ -149,6 +150,7 @@ export const LoginPage = () => {
                     required
                   />
                 </div>
+                <div className="form__input-error-message"></div>
 
                 <input type="submit" value="Sign In" className="sign-btn" onClick={handleSignIn} />
 
@@ -171,6 +173,7 @@ export const LoginPage = () => {
                 <button type="button" className="toggle" onClick={handleToggle}>
                   Sign in
                 </button>
+                <div id="loginMessage" className="form__message form__message--error"></div>
               </div>
 
               <div className="actual-form">
@@ -187,6 +190,7 @@ export const LoginPage = () => {
                     required
                   />
                 </div>
+                <div id="emailError" className="form__input-error-message"></div>
 
                 <div className={`input-wrap ${inputFocus[4] ? "active" : ""}`}>
                   <input
@@ -202,6 +206,7 @@ export const LoginPage = () => {
                     required
                   />
                 </div>
+                <div  id="passwordError" className="form__input-error-message"></div>
 
                 <div className={`input-wrap ${inputFocus[5] ? "active" : ""}`}>
                   <input
@@ -216,6 +221,7 @@ export const LoginPage = () => {
                     required
                   />
                 </div>
+                <div id="passwordMatchError" className="form__input-error-message"></div>
 
 
                 <input type="submit" value="Sign Up" className="sign-btn" onClick={handleSubmit}/>

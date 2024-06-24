@@ -25,12 +25,12 @@ const auth = getAuth(fireApp);
  export const registerUser = (email, password, event)=>{
       event.preventDefault();
   if(!validateEmail(email)){
-     window.alert("Invalid Email");
+    document.getElementById("emailError").innerHTML = "Please enter a valid Email";
      return;
   }
 
   if(!validatePassword(password)){
-    window.alert("Password length should be greater than 6 characters");
+    document.getElementById("passwordError").innerHTML = "Password length should be greater than 6 characters";
     return;
   }
 
@@ -40,21 +40,22 @@ const auth = getAuth(fireApp);
     // Signed up 
     const user = userCredential.user;
     // ...
-   window.alert("user created");
-
+  
+    document.getElementById("loginMessage").innerHTML = "Account Successfully Created";
+    setTimeout(() => {
+      }, 1400);
   })
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
     // ..
-    window.alert("cannot add user");
   });
+
 }
 
 
-
 function validateEmail(email){
-    const expression = /^[^@]+@\w+(\.\w+)+\w$/;
+    const expression = /^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i;
     return (expression.test(email) === true);
   }
   
