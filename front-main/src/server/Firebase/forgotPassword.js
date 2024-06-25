@@ -16,3 +16,19 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+
+
+export const resetPassword = (email, event) =>{
+ event.preventDefault();
+ const resetButton = document.getElementById("forgot-btn");
+ resetButton.disabled = true;
+ sendPasswordResetEmail(auth, email)
+  .then(() => {
+    // Signed up 
+    // ...
+    document.getElementById("forgottenPassword").innerHTML = "If email is valid, a password reset link has been sent"
+    setTimeout(() => {
+      resetButton.disabled = false;
+    }, 3000);
+  })
+}

@@ -522,7 +522,7 @@ font-size: 0.7rem;
 color: red;
 }
 
-#loginMessage{
+#loginMessage, #forgottenPassword{
  font-size: 0.8rem;
 }
 

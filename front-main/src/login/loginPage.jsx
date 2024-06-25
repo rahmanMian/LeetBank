@@ -8,6 +8,7 @@ import './loginPage.css'; // Adjust the path as per your folder structure
 import { useNavigate } from 'react-router-dom';
 import {registerUser} from '../server/Firebase/register.js';
 import { signinUser } from '../server/Firebase/signin.js';
+import { resetPassword } from '../server/Firebase/forgotPassword.js';
 
 export const LoginPage = () => {
   const [isSignUpMode, setSignUpMode] = useState(false);
@@ -101,6 +102,11 @@ export const LoginPage = () => {
     const handleFlipFront = () => {
       setClassNameFront("is-flipped");
       setClassNameBack("");
+    }
+
+    const handleResetPassword = (event) =>{
+      const resetEmail = document.getElementById("resetPasswordEmail").value;
+      resetPassword(resetEmail, event);
     }
 
 
@@ -301,11 +307,13 @@ export const LoginPage = () => {
                 <h2>Forgotten Your Password?</h2>
                 <h6>Enter your email for a reset link</h6>
               </div>
+              <div id="forgottenPassword"></div>
               <div className={`input-wrap forgotten-email`}>
                   <input
                     type="text"
                     minLength="4"
                     placeholder="Email"
+                    id="resetPasswordEmail"
                     className="input-field"
                     autoComplete="off"
                     onFocus={() => handleFocus(3)}
@@ -313,8 +321,7 @@ export const LoginPage = () => {
                     required
                   />
                 </div>
-
-                <input type="submit" value="Send Link" className="forgot-btn" onClick={()=>{}} />
+                <input type="submit" value="Send Link" id="forgot-btn" className="forgot-btn" onClick={handleResetPassword} />
           </div>
           </div>
         </div>
