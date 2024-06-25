@@ -22,20 +22,33 @@ const auth = getAuth(fireApp);
 
 
 
- export const registerUser = (email, password, event)=>{
+ export const registerUser = (email, password1, password2, event)=>{
       event.preventDefault();
-  if(!validateEmail(email)){
-    document.getElementById("emailError").innerHTML = "Please enter a valid Email";
-     return;
-  }
 
-  if(!validatePassword(password)){
-    document.getElementById("passwordError").innerHTML = "Password length should be greater than 6 characters";
+    
+  if(!passwordMatch(password1, password2)){
+    document.getElementById("passwordError").innerHTML = "Passwords do not match";
+    document.getElementById("passwordMatchError").innerHTML = "Passwords do not match";
+    document.getElementById("emailError").innerHTML = "";
     return;
   }
 
   
-  createUserWithEmailAndPassword(auth, email, password)
+  if(!validateEmail(email)){
+    document.getElementById("emailError").innerHTML = "Please enter a valid Email";
+    document.getElementById("passwordError").innerHTML = "";
+    document.getElementById("passwordMatchError").innerHTML = "";
+     return;
+  }
+
+  if(!validatePassword(password1)){
+    document.getElementById("passwordError").innerHTML = "Password length should be greater than 6 characters";
+    document.getElementById("emailError").innerHTML = "";
+    return;
+  }
+
+  
+  createUserWithEmailAndPassword(auth, email, password1)
   .then((userCredential) => {
     // Signed up 
     const user = userCredential.user;
@@ -43,8 +56,8 @@ const auth = getAuth(fireApp);
   
     document.getElementById("loginMessage").innerHTML = "Account Successfully Created";
     setTimeout(() => {
-      }, 2000);
       window.location.reload();
+      }, 2000);  
   })
   .catch((error) => {
     window.alert("User Already Exists or Creation Error");
@@ -59,14 +72,13 @@ function validateEmail(email){
     return (expression.test(email) === true);
   }
   
-  /**
-   * Validates the length of a password.
-   * @param {string} password - The password to validate.
-   * @returns {boolean} - Returns true if the password length is greater than 6 characters, false otherwise.
-   */
-  
+
   function validatePassword(password){
     return (password.length > 6);
+  }
+
+  function passwordMatch(password1, password2){
+     return password1 === password2;
   }
   
 

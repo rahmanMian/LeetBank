@@ -7,6 +7,7 @@ import {CustomAlert} from './customAlert';
 import './loginPage.css'; // Adjust the path as per your folder structure
 import { useNavigate } from 'react-router-dom';
 import {registerUser} from '../server/Firebase/register.js';
+import { signinUser } from '../server/Firebase/signin.js';
 
 export const LoginPage = () => {
   const [isSignUpMode, setSignUpMode] = useState(false);
@@ -77,19 +78,18 @@ export const LoginPage = () => {
 
 
     const handleSubmit = (event) =>{
-
-      if(password1 !== password2){
-        event.preventDefault();
-        handleShowAlert();
-      }else{
-      registerUser(document.getElementById("signup-email").value, password2, event);
-      }
-
-      
+      registerUser(document.getElementById("signup-email").value, password1, password2, event);
     }
 
-    const handleSignIn = () =>{
+    const handleSignIn = async (event) =>{
+      const signinEmail = document.getElementById("signinEmail").value;
+      const signinPass = document.getElementById("signinPassword").value
+      
+      const isSuccess = await signinUser(signinEmail, signinPass, event);
+      if(isSuccess){
       navigate("/login-to-app");
+      }
+      
       
     }
 
@@ -121,6 +121,7 @@ export const LoginPage = () => {
                 <button type="button" className="toggle" onClick={handleToggle}>
                   Sign up
                 </button>
+               <div id="signinMessage" className="form__message form__message--error"></div>
               </div>
 
               <div className="actual-form">
@@ -130,13 +131,14 @@ export const LoginPage = () => {
                     minLength="4"
                     className="input-field"
                     placeholder= "Email"
+                    id="signinEmail"
                     autoComplete="off"
                     onFocus={() => handleFocus(1)}
                     onBlur={(e) => handleBlur(1, e.target.value)}
                     required
                   />
                 </div>
-                <div  className="form__input-error-message"></div>
+                <div id="signinEmailError" className="form__input-error-message"></div>
 
                 <div className={`input-wrap ${inputFocus[2] ? "active" : ""}`}>
                   <input
@@ -144,13 +146,14 @@ export const LoginPage = () => {
                     minLength="4"
                     className="input-field"
                     placeholder="Password"
+                    id="signinPassword"
                     autoComplete="off"
                     onFocus={() => handleFocus(2)}
                     onBlur={(e) => handleBlur(2, e.target.value)}
                     required
                   />
                 </div>
-                <div className="form__input-error-message"></div>
+                <div id="signinPasswordError" className="form__input-error-message"></div>
 
                 <input type="submit" value="Sign In" className="sign-btn" onClick={handleSignIn} />
 

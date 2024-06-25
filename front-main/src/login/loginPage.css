@@ -523,6 +523,11 @@ color: red;
 }
 
 #loginMessage{
-margin-left: 5px;
+ font-size: 0.8rem;
+}
+
+#signinMessage{
+  font-size: 0.8rem;
+  color: red;
 }
 
