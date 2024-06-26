@@ -160,12 +160,20 @@ form.sign-up-form {
   cursor: pointer;
   border-radius: 0.8rem;
   font-size: 0.8rem;
-  margin-bottom: 2rem;
   transition: 0.3s;
+  margin-bottom: 1rem;
 }
 
 .sign-btn:hover {
   background-color: #8371fd;
+}
+
+#google-btn{
+  background-image: url(../img/google-logo.svg);
+  background-size: 2rem;  
+  background-repeat: no-repeat;
+  background-position: 30px;
+  margin-bottom: 2rem;
 }
 
 
@@ -452,6 +460,7 @@ main.sign-up-mode .carousel {
  
   .forgotten-email{
     margin-top: 0;
+    margin-bottom: 30px;
   }
 }
 
@@ -512,6 +521,7 @@ main.sign-up-mode .carousel {
 
   .forgotten-email{
     margin-top: 0;
+    margin-bottom: 30px;
   }
 }
 

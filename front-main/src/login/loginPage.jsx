@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import {registerUser} from '../server/Firebase/register.js';
 import { signinUser } from '../server/Firebase/signin.js';
 import { resetPassword } from '../server/Firebase/forgotPassword.js';
+import { googleSignin } from '../server/Firebase/googleSignin.js';
 
 export const LoginPage = () => {
   const [isSignUpMode, setSignUpMode] = useState(false);
@@ -93,6 +94,19 @@ export const LoginPage = () => {
       
       
     }
+    
+    
+    const handleGoogleSignIn = async (event) =>{
+  
+      
+      const isSuccess = await googleSignin(event);
+      if(isSuccess){
+      navigate("/login-to-app");
+      }
+      
+      
+    }
+    
 
     const handleFlipBack = () => {
        setClassNameBack("is-flipped");
@@ -108,7 +122,7 @@ export const LoginPage = () => {
       const resetEmail = document.getElementById("resetPasswordEmail").value;
       resetPassword(resetEmail, event);
     }
-
+  
 
   return (
     <main className={isSignUpMode ? "sign-up-mode" : ""}>
@@ -162,6 +176,7 @@ export const LoginPage = () => {
                 <div id="signinPasswordError" className="form__input-error-message"></div>
 
                 <input type="submit" value="Sign In" className="sign-btn" onClick={handleSignIn} />
+                <input type="submit" value="Sign In With Google" className="sign-btn" id="google-btn" onClick={handleGoogleSignIn} />
 
                 <p className="text">
                   Forgotten your password?  <a onClick={handleFlipFront} className='help-link'>Get help</a> signing in
