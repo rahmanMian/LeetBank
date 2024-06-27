@@ -9,6 +9,7 @@ import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_AUTH_KEY,
   authDomain: "leetbank-auth.firebaseapp.com",
+  databaseURL: "https://leetbank-auth-default-rtdb.firebaseio.com",
   projectId: "leetbank-auth",
   storageBucket: "leetbank-auth.appspot.com",
   messagingSenderId: "687062345726",
