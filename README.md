@@ -55,4 +55,3 @@ To get started with this Create React App project, follow the steps below:
 
 
 For more information, refer to the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started) and the [React documentation](https://reactjs.org/).
-```  
