@@ -12,6 +12,7 @@ import logo from '../img/logo.png'; // Adjust the path based on your directory s
 
 
 
+
 /**
  * Component to add and manage questions.
  *
@@ -23,7 +24,7 @@ import logo from '../img/logo.png'; // Adjust the path based on your directory s
 export function AddQuestion() {
 
     //gets the locally stored values of questions stored
-    const [questions, setQuestion] = useState(() => {
+   const [questions, setQuestion] = useState(() => {
         const localValue = localStorage.getItem('QUESTIONS');
         if (localValue === null) return [];
         return JSON.parse(localValue);
