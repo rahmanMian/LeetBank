@@ -21,8 +21,9 @@ LeetBank is a web application designed to help you store and manage your LeetCod
 ## Technologies
 
 - **React**: A JavaScript library for building user interfaces, particularly single-page applications.
-- **CSS**: A style sheet language used for describing the presentation of a document written in HTML or XML.
 - **JavaScript**: A programming language that is one of the core technologies of the World Wide Web, alongside HTML and CSS.
+- **HTML**: The standard markup language for documents designed to be displayed in a web browser.
+- **CSS**: A style sheet language used for describing the presentation of a document written in HTML or XML.
 - **Node.js**: A JavaScript runtime built on Chrome's V8 JavaScript engine that allows you to run JavaScript on the server.
 - **npm** (Node Package Manager): A package manager for the JavaScript programming language that allows you to install and manage dependencies.
 
