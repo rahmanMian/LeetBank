@@ -250,7 +250,7 @@ export const LoginPage = () => {
                 </div>
                 <div id="passwordMatchError" className="form__input-error-message"></div>
 
-
+            
                 <input type="submit" value="Sign Up" className="sign-btn" onClick={handleSubmit}/>
                             
               {showAlert && (

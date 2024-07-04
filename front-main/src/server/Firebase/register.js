@@ -1,7 +1,7 @@
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
-
+import { addUserToDB } from "../../add/addQuestion";
 
 
 
@@ -56,6 +56,7 @@ const auth = getAuth(fireApp);
     // ...
   
     document.getElementById("loginMessage").innerHTML = "Account Successfully Created";
+    addUserToDB(email);
     setTimeout(() => {
       window.location.reload();
       }, 2000);  
