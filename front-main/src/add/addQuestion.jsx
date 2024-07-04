@@ -8,7 +8,7 @@ import { SearchBlocks} from "./searchBlocks";
 import { QuestionSearchBar } from "./questionSearchBar";
 import { AddedSearchBlocks } from "./addedSearchBlocks";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore, collection, addDoc, query, where, getDocs} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import { getFirestore, collection, doc, addDoc, query, querySnapshot, updateDoc, where, getDocs, getDoc} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import logo from '../img/logo.png'; // Adjust the path based on your directory structure
 
 // Your Firebase configuration object
@@ -35,11 +35,24 @@ const firebaseConfig = {
   // Function to check for duplicate email and add user if no duplicate is found
 export const addUserToDB = async (email) => {
     try {
+       
         const userCollectionRef = collection(db, 'users');
 
-        // Query to check if the email already exists
-        const q = query(userCollectionRef, where('email', '==', email));
-        const querySnapshot = await getDocs(q);
+        // Query to find users with the specified email
+        const userQuery = query(userCollectionRef, where('email', '==', email));
+        const userSnapshot = await getDocs(userQuery);
+
+        if (userSnapshot.empty) {
+            console.log("No user found with the specified email.");
+            return;
+        }
+
+        const userDoc = userSnapshot.docs[0];
+        const userDocRef = doc(db, 'users', userDoc.id);
+
+           // Get the user's questions
+           const userData = userDoc.data();
+           const questions = userData.questions || [];
 
         if (querySnapshot.empty) {
             // No duplicate found, add the new user
@@ -56,6 +69,57 @@ export const addUserToDB = async (email) => {
         console.error("Error adding document: ", error.message);
     }
 };
+
+
+export const addQuestionToDB = async (title, titleSlug) => {
+    try {
+        const userDocRef = doc(db, 'users', sessionStorage.getItem("currentEmail"));
+        const userDocSnap = await getDoc(userDocRef);
+
+
+
+        if (!userDocSnap.exists()) {
+            console.log("No user found with the specified ID.");
+            return;
+        }
+
+        const userData = userDocSnap.data();
+        const questions = userData.questions || [];
+
+        // Check if the question title already exists in the user's questions array
+        const titleExists = questions.some(question => question.title === title);
+
+        if (titleExists) {
+            console.log("Question title already exists.");
+            return;
+        } else {
+            // Create the new question
+            const newQuestion = {
+                id: uuidv4(),
+                title: title,
+                titleSlug: titleSlug,
+                comment: ""
+            };
+
+            // Add the new question to the user's questions array
+            // Add the new question at the top of the array
+            const updatedQuestions = [newQuestion, ...questions];
+
+            // Update the user's document with the new questions array
+            await updateDoc(userDocRef, {
+                questions: updatedQuestions
+            });
+
+            console.log("Question added successfully.");
+        }
+    } catch (error) {
+        console.error("error adding question", error.message);
+    }
+
+
+
+
+}
 
 /**
  * Component to add and manage questions.
@@ -133,7 +197,10 @@ export function AddQuestion() {
                 comment: ""
             };
             setQuestion(questions => [newQuestion, ...questions]);
+              /*last worked on point*/ 
+            addQuestionToDB(title, titleSlug);
         }
+      
     }
     
 

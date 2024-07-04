@@ -91,6 +91,7 @@ export const LoginPage = () => {
       
       const isSuccess = await signinUser(signinEmail, signinPass, event);
       if(isSuccess){
+      sessionStorage.setItem("currentEmail", signinEmail);
       navigate("/login-to-app");
       }
       
@@ -105,6 +106,7 @@ export const LoginPage = () => {
 
       if(email){
       addUserToDB(email);
+      sessionStorage.setItem("currentEmail", email);
       navigate("/login-to-app");
       }
       
