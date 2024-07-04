@@ -7,11 +7,55 @@ import { SearchBar } from "./searchBar";
 import { SearchBlocks} from "./searchBlocks";
 import { QuestionSearchBar } from "./questionSearchBar";
 import { AddedSearchBlocks } from "./addedSearchBlocks";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, collection, addDoc, query, where, getDocs} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import logo from '../img/logo.png'; // Adjust the path based on your directory structure
 
+// Your Firebase configuration object
+const firebaseConfig = {
+    apiKey: process.env.REACT_APP_AUTH_KEY,
+    authDomain: "leetbank-auth.firebaseapp.com",
+    databaseURL: "https://leetbank-auth-default-rtdb.firebaseio.com",
+    projectId: "leetbank-auth",
+    storageBucket: "leetbank-auth.appspot.com",
+    messagingSenderId: "687062345726",
+    appId: "1:687062345726:web:421eea1cc2d57fdfa602af",
+    measurementId: "G-NP2RXNWYRQ"
+  };
+  
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  
+  // Initialize Firestore
+  const db = getFirestore(app);
+  
+  // Now you can use `db` to interact with Firestore
+  
 
+  // Function to check for duplicate email and add user if no duplicate is found
+export const addUserToDB = async (email) => {
+    try {
+        const userCollectionRef = collection(db, 'users');
 
+        // Query to check if the email already exists
+        const q = query(userCollectionRef, where('email', '==', email));
+        const querySnapshot = await getDocs(q);
 
+        if (querySnapshot.empty) {
+            // No duplicate found, add the new user
+            const docRef = await addDoc(userCollectionRef, {
+                email: email,
+                questions: []
+            });
+            console.log("Document written with ID: ", docRef.id);
+        } else {
+            // Duplicate found
+            console.log("Email already exists in the database.");
+        }
+    } catch (error) {
+        console.error("Error adding document: ", error.message);
+    }
+};
 
 /**
  * Component to add and manage questions.
@@ -108,7 +152,8 @@ export function AddQuestion() {
             )
         );
     }
-
+   
+      
 
     return (
         <>

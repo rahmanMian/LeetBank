@@ -10,6 +10,8 @@ import {registerUser} from '../server/Firebase/register.js';
 import { signinUser } from '../server/Firebase/signin.js';
 import { resetPassword } from '../server/Firebase/forgotPassword.js';
 import { googleSignin } from '../server/Firebase/googleSignin.js';
+import { addUserToDB } from '../add/addQuestion.jsx';
+
 
 export const LoginPage = () => {
   const [isSignUpMode, setSignUpMode] = useState(false);
@@ -99,11 +101,12 @@ export const LoginPage = () => {
     const handleGoogleSignIn = async (event) =>{
   
       
-      const isSuccess = await googleSignin(event);
-      if(isSuccess){
+      const email = await googleSignin(event);
+
+      if(email){
+      addUserToDB(email);
       navigate("/login-to-app");
       }
-      
       
     }
     

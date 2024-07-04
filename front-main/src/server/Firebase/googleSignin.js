@@ -31,7 +31,8 @@ signInWithPopup(auth, provider)
     const user = result.user;
     // IdP data available using getAdditionalUserInfo(result)
     // ...
-    resolve(true);
+    console.log(user);
+    resolve(user.email);
   }).catch((error) => {
     // Handle Errors here.
     const errorCode = error.code;
