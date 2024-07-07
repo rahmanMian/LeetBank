@@ -32,10 +32,8 @@ const firebaseConfig = {
   // Now you can use `db` to interact with Firestore
   
 
-  // Function to check for duplicate email and add user if no duplicate is found
-export const addUserToDB = async (email) => {
+  export const addUserToDB = async (email) => {
     try {
-       
         const userCollectionRef = collection(db, 'users');
 
         // Query to find users with the specified email
@@ -43,22 +41,10 @@ export const addUserToDB = async (email) => {
         const userSnapshot = await getDocs(userQuery);
 
         if (userSnapshot.empty) {
-            console.log("No user found with the specified email.");
-            return;
-        }
-
-        const userDoc = userSnapshot.docs[0];
-        const userDocRef = doc(db, 'users', userDoc.id);
-
-           // Get the user's questions
-           const userData = userDoc.data();
-           const questions = userData.questions || [];
-
-        if (querySnapshot.empty) {
             // No duplicate found, add the new user
             const docRef = await addDoc(userCollectionRef, {
                 email: email,
-                questions: []
+                questions: []  // Assuming questions is initialized as an empty array
             });
             console.log("Document written with ID: ", docRef.id);
         } else {
@@ -69,6 +55,8 @@ export const addUserToDB = async (email) => {
         console.error("Error adding document: ", error.message);
     }
 };
+
+
 
 
 export const addQuestionToDB = async (title, titleSlug) => {
