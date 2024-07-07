@@ -179,7 +179,7 @@ const addCommentToDB = async (id, comment) => {
                 questions: updatedQuestions
             });
             
-            console.log("Question added successfully.");
+            console.log("comment added successfully.");
         
     } catch (error) {
         console.error("Error adding question:", error.message);
