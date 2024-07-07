@@ -8,7 +8,7 @@ export const SearchBlock = ({result, addQuestion, setInput}) => {
   const handleClick = () => {
     addQuestion(result.title, result.titleSlug);
     setInput('');  // Clear the input
-    window.location.reload();  //ensuures search bar is reset
+    //window.location.reload();  //ensuures search bar is reset
   };
 
   return (

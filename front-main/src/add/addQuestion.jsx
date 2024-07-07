@@ -58,56 +58,57 @@ const firebaseConfig = {
 
 
 
-
-export const addQuestionToDB = async (title, titleSlug) => {
+const addQuestionToDB = async (title, titleSlug) => {
     try {
-        const userDocRef = doc(db, 'users', sessionStorage.getItem("currentEmail"));
-        const userDocSnap = await getDoc(userDocRef);
-
-
-
-        if (!userDocSnap.exists()) {
-            console.log("No user found with the specified ID.");
+        const usersCollectionRef = collection(db, 'users');
+        const currentUserEmail = sessionStorage.getItem("currentEmail");
+        
+        // Create a query to search for documents where 'email' field matches currentUserEmail
+        const q = query(usersCollectionRef, where("email", "==", currentUserEmail));
+        
+        // Execute the query and get the query snapshot
+        const querySnapshot = await getDocs(q);
+        
+        if (querySnapshot.empty) {
+            console.log("No user found with the specified email.");
             return;
         }
-
-        const userData = userDocSnap.data();
-        const questions = userData.questions || [];
-
+        
+        // Assuming email is unique, we expect only one document
+        const userDoc = querySnapshot.docs[0];
+        const userData = userDoc.data();
+        let questions = userData.questions || [];
+        
         // Check if the question title already exists in the user's questions array
         const titleExists = questions.some(question => question.title === title);
-
+        
         if (titleExists) {
             console.log("Question title already exists.");
             return;
         } else {
             // Create the new question
             const newQuestion = {
-                id: uuidv4(),
+                id: uuidv4(), // Generate a new unique ID for the question
                 title: title,
                 titleSlug: titleSlug,
-                comment: ""
+                comment: "" // Optional: Initialize with an empty comment
             };
-
+            
             // Add the new question to the user's questions array
-            // Add the new question at the top of the array
             const updatedQuestions = [newQuestion, ...questions];
-
-            // Update the user's document with the new questions array
+            
+            // Update the user's document with the updated questions array
+            const userDocRef = doc(db, 'users', userDoc.id);
             await updateDoc(userDocRef, {
                 questions: updatedQuestions
             });
-
+            
             console.log("Question added successfully.");
         }
     } catch (error) {
-        console.error("error adding question", error.message);
+        console.error("Error adding question:", error.message);
     }
-
-
-
-
-}
+};
 
 /**
  * Component to add and manage questions.
