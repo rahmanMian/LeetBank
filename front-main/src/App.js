@@ -24,7 +24,9 @@ function App() {
 
    <Router>
       <Routes>
-        <Route path="/" element={<LoginPage />} />
+        <Route path="/" element={
+          <LoginPage />
+        } />
         <Route path="/login-to-app" element={
           <ProtectedRoutes>
            <AddQuestion />

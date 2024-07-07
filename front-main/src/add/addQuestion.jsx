@@ -64,7 +64,7 @@ const firebaseConfig = {
 const addQuestionToDB = async (newQuestion) => {
     try {
         const usersCollectionRef = collection(db, 'users');
-        const currentUserEmail = sessionStorage.getItem("currentEmail");
+        const currentUserEmail = localStorage.getItem("currentEmail");
         
         // Create a query to search for documents where 'email' field matches currentUserEmail
         const q = query(usersCollectionRef, where("email", "==", currentUserEmail));
@@ -111,7 +111,7 @@ const addQuestionToDB = async (newQuestion) => {
 export const removeQuestionFromDB = async (id) => {
     try {
         const usersCollectionRef = collection(db, 'users');
-        const currentUserEmail = sessionStorage.getItem("currentEmail");
+        const currentUserEmail = localStorage.getItem("currentEmail");
         
         // Create a query to search for documents where 'email' field matches currentUserEmail
         const q = query(usersCollectionRef, where("email", "==", currentUserEmail));
@@ -152,7 +152,7 @@ export const removeQuestionFromDB = async (id) => {
 const addCommentToDB = async (id, comment) => {
     try {
         const usersCollectionRef = collection(db, 'users');
-        const currentUserEmail = sessionStorage.getItem("currentEmail");
+        const currentUserEmail = localStorage.getItem("currentEmail");
         
         // Create a query to search for documents where 'email' field matches currentUserEmail
         const q = query(usersCollectionRef, where("email", "==", currentUserEmail));
@@ -229,7 +229,7 @@ export function AddQuestion() {
         const fetchQuestions = async () => {
             try {
                 const userCollectionRef = collection(db, "users");
-                const currentUserEmail = sessionStorage.getItem("currentEmail");
+                const currentUserEmail = localStorage.getItem("currentEmail");
         
                 // Create a query to search for documents where 'email' field matches currentUserEmail
                 const q = query(userCollectionRef, where("email", "==", currentUserEmail));
@@ -264,7 +264,9 @@ export function AddQuestion() {
     }, [index]);
 
 
+   useEffect(() =>{
 
+   }, )
 
    
     /**

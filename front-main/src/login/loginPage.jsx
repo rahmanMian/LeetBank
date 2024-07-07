@@ -5,7 +5,7 @@ import image2 from '../img/image2.png';
 import image3 from '../img/image3.png'
 import {CustomAlert} from './customAlert';
 import './loginPage.css'; // Adjust the path as per your folder structure
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import {registerUser} from '../server/Firebase/register.js';
 import { signinUser } from '../server/Firebase/signin.js';
 import { resetPassword } from '../server/Firebase/forgotPassword.js';
@@ -91,7 +91,7 @@ export const LoginPage = () => {
       
       const isSuccess = await signinUser(signinEmail, signinPass, event);
       if(isSuccess){
-      sessionStorage.setItem("currentEmail", signinEmail);
+      localStorage.setItem("currentEmail", signinEmail);
       navigate("/login-to-app");
       }
       
@@ -106,7 +106,7 @@ export const LoginPage = () => {
 
       if(email){
       addUserToDB(email);
-      sessionStorage.setItem("currentEmail", email);
+      localStorage.setItem("currentEmail", email);
       navigate("/login-to-app");
       }
       
@@ -128,7 +128,7 @@ export const LoginPage = () => {
       resetPassword(resetEmail, event);
     }
   
-
+   
   return (
     <main className={isSignUpMode ? "sign-up-mode" : ""}>
       <div className="box">
