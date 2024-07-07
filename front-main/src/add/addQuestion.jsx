@@ -10,6 +10,7 @@ import { AddedSearchBlocks } from "./addedSearchBlocks";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getFirestore, collection, doc, addDoc, query, querySnapshot, updateDoc, where, getDocs, getDoc} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import logo from '../img/logo.png'; // Adjust the path based on your directory structure
+import { Navigate } from "react-router-dom";
 
 // Your Firebase configuration object
 const firebaseConfig = {
@@ -263,6 +264,9 @@ export function AddQuestion() {
     }, [index]);
 
 
+
+
+   
     /**
      * Adds a new question to the state.
      *
