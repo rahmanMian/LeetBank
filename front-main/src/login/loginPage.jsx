@@ -181,7 +181,7 @@ export const LoginPage = () => {
                 <div id="signinPasswordError" className="form__input-error-message"></div>
 
                 <input type="submit" value="Sign In" className="sign-btn" onClick={handleSignIn} />
-                <input type="submit" value="Sign In With Google" className="sign-btn" id="google-btn" onClick={handleGoogleSignIn} />
+                <input type="submit" value="Sign in with Google" className="sign-btn" id="google-btn" onClick={handleGoogleSignIn} />
 
                 <p className="text">
                   Forgotten your password?  <a onClick={handleFlipFront} className='help-link'>Get help</a> signing in
@@ -274,9 +274,10 @@ export const LoginPage = () => {
           <div  className={`carousel front ${classNameFront}`}>
             <div className="images-wrapper">
               <img
+                id="image1"
                 src={image1}
                 className={`image img-1 ${activeBullet === 1 ? "show" : ""}`}
-                alt="Access your solved LeetCode Questions"
+                alt="Access your LeetCode Questions"
               />
               <img
                 src={image2}
@@ -286,7 +287,7 @@ export const LoginPage = () => {
               <img
                 src={image3}
                 className={`image img-3 ${activeBullet === 3 ? "show" : ""}`}
-                alt="Filter from multiple options"
+                alt="Quickly access your solutions"
               />
             </div>
 
@@ -298,7 +299,7 @@ export const LoginPage = () => {
                 >
                   <h2>Access your LeetCode Questions</h2>
                   <h2>Store your Solutions</h2>
-                  <h2>Filter from multiple options</h2>
+                  <h2>Quickly access your solutions</h2>
                 </div>
               </div>
 

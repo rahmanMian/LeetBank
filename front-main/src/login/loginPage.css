@@ -174,7 +174,7 @@ form.sign-up-form {
   background-repeat: no-repeat;
   background-position: 30px;
   margin-bottom: 2rem;
-  margin-left: 10px;
+  padding-left: 10px;
 }
 
 
@@ -270,8 +270,8 @@ main.sign-up-mode .carousel {
   transition: opacity 0.3s, transform 0.5s;
 }
 
-.img-1 {
-  transform: translate(0, -50px);
+#image1{
+  transform: scale(1.1) translateY(50px);
 }
 
 .img-2 {
