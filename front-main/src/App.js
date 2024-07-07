@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import {AddQuestion} from './add/addQuestion.jsx';
 import {LoginPage} from './login/loginPage.jsx';
 import { ProtectedRoutes } from './login/routes/protectedRoutes.jsx';
+import { ProtectedLogin } from './login/routes/protectedLogin.jsx';
 import React, { useState } from 'react';
 
 function App() {
@@ -25,7 +26,9 @@ function App() {
    <Router>
       <Routes>
         <Route path="/" element={
+          <ProtectedLogin>
           <LoginPage />
+          </ProtectedLogin>
         } />
         <Route path="/login-to-app" element={
           <ProtectedRoutes>
