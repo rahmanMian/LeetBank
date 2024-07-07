@@ -32,6 +32,8 @@ const firebaseConfig = {
   // Now you can use `db` to interact with Firestore
   
 
+
+
   export const addUserToDB = async (email) => {
     try {
         const userCollectionRef = collection(db, 'users');
@@ -222,10 +224,30 @@ export function AddQuestion() {
     const [searchBarAddedClicked, setSearchBarAddedClicked] = useState(false);
 
 
-    //locally stores questions added my users 
     useEffect(() => {
-        localStorage.setItem("QUESTIONS", JSON.stringify(questions));
-    }, [questions]);
+        const fetchQuestions = async () => {
+            try {
+                const userCollectionRef = collection(db, "users");
+                const currentUserEmail = sessionStorage.getItem("currentEmail");
+        
+                // Create a query to search for documents where 'email' field matches currentUserEmail
+                const q = query(userCollectionRef, where("email", "==", currentUserEmail));
+                
+                // Execute the query and get the query snapshot
+                const querySnapshot = await getDocs(q);
+                const userDoc = querySnapshot.docs[0];
+                const userData = userDoc.data();
+                let fetchedQuestions = userData.questions || [];
+               
+
+                setQuestion(fetchedQuestions);
+            } catch (error) {
+                console.error("Error fetching questions:", error.message);
+            }
+        };
+
+        fetchQuestions();
+    }, []); 
 
 
 
