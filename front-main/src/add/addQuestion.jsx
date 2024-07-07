@@ -104,6 +104,48 @@ const addQuestionToDB = async (newQuestion) => {
 };
 
 
+
+export const removeQuestionFromDB = async (id) => {
+    try {
+        const usersCollectionRef = collection(db, 'users');
+        const currentUserEmail = sessionStorage.getItem("currentEmail");
+        
+        // Create a query to search for documents where 'email' field matches currentUserEmail
+        const q = query(usersCollectionRef, where("email", "==", currentUserEmail));
+        
+        // Execute the query and get the query snapshot
+        const querySnapshot = await getDocs(q);
+        
+        if (querySnapshot.empty) {
+            console.log("No user found with the specified email.");
+            return;
+        }
+        
+        // Assuming email is unique, we expect only one document
+        const userDoc = querySnapshot.docs[0];
+        const userData = userDoc.data();
+        let questions = userData.questions || [];
+        
+
+        
+   
+            // Add the new question to the user's questions array
+            const updatedQuestions =  questions.filter(question => question.id !== id)
+            
+            // Update the user's document with the updated questions array
+            const userDocRef = doc(db, 'users', userDoc.id);
+            await updateDoc(userDocRef, {
+                questions: updatedQuestions
+            });
+            
+            console.log("Question removed successfully.");
+        
+    } catch (error) {
+        console.error("Error adding question:", error.message);
+    }
+};
+
+
 const addCommentToDB = async (id, comment) => {
     try {
         const usersCollectionRef = collection(db, 'users');

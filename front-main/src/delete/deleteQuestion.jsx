@@ -1,4 +1,6 @@
+import { removeQuestionFromDB } from "../add/addQuestion";
 import "../App.css";
+
 
 /**
  * Deletes a question from the state based on its ID.
@@ -11,5 +13,6 @@ import "../App.css";
  */
 export function DeleteQuestion({ id, setQuestion, setIndex}) {
     setQuestion(questions => questions.filter(question => question.id !== id));
+    removeQuestionFromDB(id);
     setIndex(Number.MAX_SAFE_INTEGER);
 }
