@@ -463,6 +463,10 @@ main.sign-up-mode .carousel {
     margin-top: 0;
     margin-bottom: 30px;
   }
+
+  .text-group h2 {
+    font-size: 1.5rem;
+  }
 }
 
 @media (max-width: 530px) {
