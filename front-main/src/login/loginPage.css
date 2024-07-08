@@ -274,12 +274,12 @@ main.sign-up-mode .carousel {
   transform: scale(1.1) translateY(50px);
 }
 
-.img-2 {
-  transform: scale(0.4, 0.5);
+.image3{
+  transform: scale(0.8);
 }
 
-.img-3 {
-  transform: scale(0.3) rotate(-20deg);
+#image3{
+  transform: scale(0.8);
 }
 
 .image.show {

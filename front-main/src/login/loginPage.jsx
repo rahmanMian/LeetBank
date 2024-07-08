@@ -280,11 +280,13 @@ export const LoginPage = () => {
                 alt="Access your LeetCode Questions"
               />
               <img
+                id="image3"
                 src={image2}
                 className={`image img-2 ${activeBullet === 2 ? "show" : ""}`}
                 alt="Store your Solutions"
               />
               <img
+                id="image3"
                 src={image3}
                 className={`image img-3 ${activeBullet === 3 ? "show" : ""}`}
                 alt="Quickly access your solutions"
@@ -295,7 +297,7 @@ export const LoginPage = () => {
               <div className="text-wrap">
                 <div
                   className="text-group"
-                  style={{ transform: `translateY(${-(activeBullet - 1) * 2.2}rem)` }}
+                  style={{ transform: `translateY(${-(activeBullet - 1) * 2.55}rem)` }}
                 >
                   <h2>Access your LeetCode Questions</h2>
                   <h2>Store your Solutions</h2>
