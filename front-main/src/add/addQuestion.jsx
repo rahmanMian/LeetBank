@@ -205,9 +205,6 @@ export function AddQuestion() {
 
     //gets the locally stored values of questions stored
    const [questions, setQuestion] = useState(() => {
-        const localValue = localStorage.getItem('QUESTIONS');
-        if (localValue === null) return [];
-        return JSON.parse(localValue);
     });
     
 
@@ -243,8 +240,6 @@ export function AddQuestion() {
                 const userDoc = querySnapshot.docs[0];
                 const userData = userDoc.data();
                 let fetchedQuestions = userData.questions || [];
-               
-
                 setQuestion(fetchedQuestions);
             } catch (error) {
                 console.error("Error fetching questions:", error.message);
@@ -267,11 +262,9 @@ export function AddQuestion() {
             sessionStorage.setItem('shuffledIndex', index);
     }, [index]);
 
+    
 
-   useEffect(() =>{
-
-   }, )
-
+  
    
     /**
      * Adds a new question to the state.
@@ -294,7 +287,6 @@ export function AddQuestion() {
                 comment: ""
             };
             setQuestion(questions => [newQuestion, ...questions]);
-              /*last worked on point*/ 
             addQuestionToDB(newQuestion);
         }
       
@@ -332,7 +324,7 @@ export function AddQuestion() {
              
              <div className="searchContainer">
              <SearchBar setResults={setResults} setInput = {setInput} setSearchBarClicked ={setSearchBarClicked}/>
-             {searchBarClicked && <SearchBlocks results = {results} addQuestion={addQuestion} setInput={setInput}/>}
+             {searchBarClicked && <SearchBlocks results = {results} addQuestion={addQuestion} setInput={setInput} questions={questions}/>}
             
              <div id="sign-out-div" onClick={handleSignOut}>
             <FontAwesomeIcon id="sign-out-btn" icon={faSignOutAlt} />
