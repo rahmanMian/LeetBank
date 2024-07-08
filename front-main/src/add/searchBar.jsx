@@ -4,7 +4,7 @@ import "./searchBar.css";
 import Axios from "axios";
 import debounce from "lodash.debounce"; // Import debounce function
 
-export function SearchBar({ setResults, input, setInput, setSearchBarClicked }) {
+export function SearchBar({ setResults, input, setInput, setSearchBarClicked, key }) {
 
   const handleClick = () => {
     setSearchBarClicked(true);
@@ -47,8 +47,10 @@ export function SearchBar({ setResults, input, setInput, setSearchBarClicked }) 
     debouncedFetchData(value);
   };
 
+ 
+
   return (
-    <div className="input-wrapper">
+    <div className="input-wrapper" key={key}>
       <FaSearch id="search-icon" />
       <input
         placeholder="Add a Question.."

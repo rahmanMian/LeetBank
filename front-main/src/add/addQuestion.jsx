@@ -225,6 +225,8 @@ export function AddQuestion() {
 
     const [searchBarAddedClicked, setSearchBarAddedClicked] = useState(false);
 
+    const [key, setKey] = useState(0);
+
 
     useEffect(() => {
         const fetchQuestions = async () => {
@@ -263,7 +265,7 @@ export function AddQuestion() {
     }, [index]);
 
     
-
+   
   
    
     /**
@@ -323,8 +325,8 @@ export function AddQuestion() {
         <>
              
              <div className="searchContainer">
-             <SearchBar setResults={setResults} setInput = {setInput} setSearchBarClicked ={setSearchBarClicked}/>
-             {searchBarClicked && <SearchBlocks results = {results} addQuestion={addQuestion} setInput={setInput} questions={questions}/>}
+             <SearchBar setResults={setResults} setInput = {setInput} setSearchBarClicked ={setSearchBarClicked} key={key} setKey={setKey}/>
+             {searchBarClicked && <SearchBlocks results = {results} addQuestion={addQuestion} setInput={setInput} questions={questions} setKey={setKey}/>}
             
              <div id="sign-out-div" onClick={handleSignOut}>
             <FontAwesomeIcon id="sign-out-btn" icon={faSignOutAlt} />
