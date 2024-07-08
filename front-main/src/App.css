@@ -332,6 +332,54 @@ button:active {
 }
 
 
+#sign-out-div{
+  transform: translateX(650px);
+  display: flex;
+  font-size: 20px;
+}
+
+#sign-out-btn{
+  font-size: 30px;
+  margin-right: 10px;
+}
+
+#sign-out-div:hover{
+  cursor: pointer;
+}
+
+
+
+@media (max-width: 1410px){
+  #sign-out-div{
+    transform: translate(210px, 5px);
+    font-size: 15px;
+    
+  }
+
+  #sign-out-btn{
+    font-size: 25px;
+    margin-right: 2px;
+   
+  }
+
+}
+
+
+@media (max-width: 530px){
+  #sign-out-div{
+    transform: translate(150px, 5px);
+    font-size: 15px;
+    
+  }
+
+  #sign-out-btn{
+    font-size: 25px;
+    margin-right: 2px;
+   
+  }
+
+}
+
 /*question anchor styling*/
 .question-link{
   color: royalblue;

@@ -11,6 +11,10 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/fireba
 import { getFirestore, collection, doc, addDoc, query, querySnapshot, updateDoc, where, getDocs, getDoc} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 import logo from '../img/logo.png'; // Adjust the path based on your directory structure
 import { Navigate } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { SignOut } from "../server/Firebase/signout";
+
 
 // Your Firebase configuration object
 const firebaseConfig = {
@@ -315,6 +319,12 @@ export function AddQuestion() {
         addCommentToDB(id, comment);
     }
    
+
+    function handleSignOut(){
+        console.log("yo");
+        SignOut();
+        window.location.reload();  
+    }
       
 
     return (
@@ -323,6 +333,12 @@ export function AddQuestion() {
              <div className="searchContainer">
              <SearchBar setResults={setResults} setInput = {setInput} setSearchBarClicked ={setSearchBarClicked}/>
              {searchBarClicked && <SearchBlocks results = {results} addQuestion={addQuestion} setInput={setInput}/>}
+            
+             <div id="sign-out-div" onClick={handleSignOut}>
+            <FontAwesomeIcon id="sign-out-btn" icon={faSignOutAlt} />
+            <p>Sign Out</p>  
+            </div>
+
              </div>
 
 
