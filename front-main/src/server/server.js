@@ -91,4 +91,10 @@ app.post('/graphql', async (req, res) => {
   }
 });
 
+
+app.get('/yurr', (req, res) => {
+  console.log("yurr");
+  res.send('yurrr');
+});
+
 app.listen(5001, ()=>console.log("app is running"));
