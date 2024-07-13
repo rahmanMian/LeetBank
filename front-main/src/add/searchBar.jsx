@@ -26,7 +26,7 @@ export function SearchBar({ setResults, input, setInput, setSearchBarClicked, ke
     }
 
     try {
-      const response = await Axios.post(process.env.REACT_APP_API_URL, { searchKeywords: value });
+      const response = await Axios.post("https://leetbankserver.vercel.app/graphql", { searchKeywords: value });
       const questionArray = response.data.data.problemsetQuestionList.questions;
       const lowercaseValue = value.toLowerCase();
 
