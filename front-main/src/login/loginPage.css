@@ -172,9 +172,7 @@ form.sign-up-form {
   background-image: url(../img/google-logo.svg);
   background-size: 2rem;  
   background-repeat: no-repeat;
-  background-position: 30px;
-  margin-bottom: 2rem;
-  padding-left: 10px; 
+ background-position: 15%;
 }
 
 
@@ -375,11 +373,14 @@ main.sign-up-mode .carousel {
   margin-top: 69px;
 }
 
+
+
 @media (max-width: 850px) {
 
-  #google-btn {
-   background-position: 100px;
-  }
+ #google-btn{
+  background-position: 24%;
+ }
+
   .box {
     height: auto;
     max-width: 550px;
@@ -473,17 +474,12 @@ main.sign-up-mode .carousel {
   }
 }
 
-@media (max-width: 478px) {
-  #google-btn {
-    background-position: 60px;
-   }
-}
+
+
 
 @media (max-width: 530px) {
 
-  #google-btn {
-    background-position: 85px;
-   }
+
   main {
     padding: 1rem;
   }
