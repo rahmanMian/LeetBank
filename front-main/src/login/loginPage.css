@@ -479,7 +479,7 @@ main.sign-up-mode .carousel {
 
 @media (max-width: 530px) {
 
-
+ 
   main {
     padding: 1rem;
   }
@@ -538,6 +538,12 @@ main.sign-up-mode .carousel {
     margin-top: 0;
     margin-bottom: 30px;
   }
+}
+
+@media (max-width: 450px){
+#google-btn{
+  background-position: 12%;
+}
 }
 
 .form__input-error-message{
