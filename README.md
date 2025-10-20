@@ -2,7 +2,7 @@
 
 # LeetBank
 https://leetbankclient.vercel.app/
-LeetBank is a web application designed to help you store and manage your LeetCode questions efficiently. With LeetBank, you can save questions, add comments, and categorize them for future reference. It's the perfect tool for anyone looking to keep track of their coding practice and improve their problem-solving skills over time.
+LeetBank is a web application designed to help you efficiently store, manage, and categorize your LeetCode questions. You can add comments, save questionsfor later, and categroize them for future reference, making it the perfect tool for anyone looking to keep track of their coding practice and improve their problem-solving skills over time.
 
 
 
